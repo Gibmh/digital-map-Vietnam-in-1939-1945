@@ -243,7 +243,15 @@ export default function HistoricalMap() {
     }
     return audioRef.current;
   };
-
+  useEffect(() => {
+    if (audioRef.current) {
+      if (selectedEvent) {
+        audioRef.current.volume = 0.02; // Đang mở bảng xem sự kiện / video -> giảm nhỏ
+      } else {
+        audioRef.current.volume = 0.2;  // Đóng bảng sự kiện -> tăng lại bình thường
+      }
+    }
+  }, [selectedEvent]);
   // Dọn dẹp audio khi unmount
   useEffect(() => {
     return () => {
@@ -331,7 +339,7 @@ export default function HistoricalMap() {
               onClick={() => setShowInfoModal(true)}
               title="Xem tác giả & tài liệu"
             >
-              📖 Tác giả & Tài liệu
+              Tác giả & Tài liệu
             </button>
           </div>
         </div>
