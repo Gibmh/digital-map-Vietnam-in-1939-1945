@@ -248,7 +248,7 @@ export default function HistoricalMap() {
         if (AudioContext) {
           const ctx = new AudioContext();
           const gainNode = ctx.createGain();
-          gainNode.gain.value = 0.2; // Âm lượng mặc định 20%
+          gainNode.gain.value = 0.4; // Âm lượng mặc định 20%
           
           const source = ctx.createMediaElementSource(audio);
           source.connect(gainNode);
