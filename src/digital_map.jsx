@@ -407,7 +407,7 @@ export default function HistoricalMap() {
           <div className="header-brand">
             <span className="brand-flag">☭</span>
             <div className="brand-titles">
-              <h1>BẢN ĐỒ CHIẾN LƯỢC (1939 - 1945)</h1>
+              <h1>BẢN ĐỒ MỐC SON(1939 - 1945)</h1>
               <p>Cách mạng Tháng Tám toàn thắng</p>
             </div>
           </div>
