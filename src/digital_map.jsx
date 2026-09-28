@@ -259,7 +259,7 @@ export default function HistoricalMap() {
         }
       } catch (err) {
         console.warn("Trình duyệt không hỗ trợ Web Audio API, dùng fallback:", err);
-        audio.volume = 0.2;
+        audio.volume = 0.4;
       }
 
       audio.onplay = () => setIsPlayingMusic(true);
