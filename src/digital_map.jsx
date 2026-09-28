@@ -122,7 +122,11 @@ export default function HistoricalMap() {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
   const timelineRef = useRef(null);
+  
+  // Quản lý âm thanh qua HTML Audio + Web Audio API (Hỗ trợ iOS Safari)
   const audioRef = useRef(null);
+  const audioCtxRef = useRef(null);
+  const gainNodeRef = useRef(null);
 
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [filterCategory, setFilterCategory] = useState('ALL');
@@ -130,6 +134,7 @@ export default function HistoricalMap() {
   const [infoTab, setInfoTab] = useState('authors');
   const [isPlayingMusic, setIsPlayingMusic] = useState(false);
   const [showAudioPrompt, setShowAudioPrompt] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(false);
 
   const categories = [
     { key: 'ALL', label: 'Tất cả' },
@@ -143,7 +148,7 @@ export default function HistoricalMap() {
     ? historicalEvents
     : historicalEvents.filter(ev => ev.category === filterCategory);
 
-  // 1. KHỞI TẠO BẢN ĐỒ TỰ ĐỘNG CÂN TỶ LỆ THEO THIẾT BỊ
+  // 1. KHỞI TẠO BẢN ĐỒ TỰ ĐỘNG CÂN TỶ LỆ
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
@@ -154,8 +159,8 @@ export default function HistoricalMap() {
 
     const strictBounds = [
       [7.5, 101.0],
-      [26.5, 110.5] // Đã nới từ 24.0 lên 26.5
-    ]
+      [26.5, 110.5] // Đã nới rộng phía Bắc cho thoáng
+    ];
 
     const isMobile = window.innerWidth <= 768;
 
@@ -192,7 +197,7 @@ export default function HistoricalMap() {
     };
   }, []);
 
-  // 2. HIỂN THỊ MARKER & HIỆU ỨNG RADAR THEO BỘ LỌC
+  // 2. HIỂN THỊ MARKER & HIỆU ỨNG RADAR
   useEffect(() => {
     const map = mapInstanceRef.current;
     if (!map) return;
@@ -221,6 +226,7 @@ export default function HistoricalMap() {
 
       const marker = L.marker(ev.coords, { icon: customIcon }).addTo(map);
       marker.on('click', () => {
+        setIsVideoPlaying(false);
         setSelectedEvent(ev);
         const isMobile = window.innerWidth <= 768;
         const targetLat = isMobile ? ev.coords[0] - 0.4 : ev.coords[0];
@@ -229,12 +235,32 @@ export default function HistoricalMap() {
     });
   }, [filterCategory, selectedEvent]);
 
-  // 3. QUẢN LÝ ĐỐI TƯỢNG ÂM THANH
+  // 3. KHỞI TẠO AUDIO & WEB AUDIO API (VƯỢT QUA GIỚI HẠN ÂM LƯỢNG IPHONE)
   const getAudioInstance = () => {
     if (!audioRef.current) {
       const audio = new Audio(themeSong);
       audio.loop = true;
-      audio.volume = 0.2;
+      audio.preload = 'auto';
+
+      // Khởi tạo GainNode để chỉnh được âm lượng trên cả iPhone/iPad
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (AudioContext) {
+          const ctx = new AudioContext();
+          const gainNode = ctx.createGain();
+          gainNode.gain.value = 0.2; // Âm lượng mặc định 20%
+          
+          const source = ctx.createMediaElementSource(audio);
+          source.connect(gainNode);
+          gainNode.connect(ctx.destination);
+
+          audioCtxRef.current = ctx;
+          gainNodeRef.current = gainNode;
+        }
+      } catch (err) {
+        console.warn("Trình duyệt không hỗ trợ Web Audio API, dùng fallback:", err);
+        audio.volume = 0.2;
+      }
 
       audio.onplay = () => setIsPlayingMusic(true);
       audio.onpause = () => setIsPlayingMusic(false);
@@ -243,18 +269,68 @@ export default function HistoricalMap() {
     }
     return audioRef.current;
   };
-  useEffect(() => {
-    if (audioRef.current) {
-      if (selectedEvent) {
-        audioRef.current.volume = 0.02; // Đang mở bảng xem sự kiện / video -> giảm nhỏ
-      } else {
-        audioRef.current.volume = 0.2;  // Đóng bảng sự kiện -> tăng lại bình thường
+
+  // Hàm chuyển đổi âm lượng từ từ (Hoạt động trên cả máy tính lẫn iPhone Safari)
+  const fadeVolume = (targetVolume, duration = 0.8) => {
+    // 1. Chỉnh qua Web Audio API (Dành cho iPhone và trình duyệt hiện đại)
+    if (gainNodeRef.current && audioCtxRef.current) {
+      const ctx = audioCtxRef.current;
+      if (ctx.state === 'suspended') {
+        ctx.resume();
       }
+      const currentVal = gainNodeRef.current.gain.value;
+      gainNodeRef.current.gain.cancelScheduledValues(ctx.currentTime);
+      gainNodeRef.current.gain.setValueAtTime(currentVal, ctx.currentTime);
+      gainNodeRef.current.gain.linearRampToValueAtTime(targetVolume, ctx.currentTime + duration);
+      return;
     }
-  }, [selectedEvent]);
-  // Dọn dẹp audio khi unmount
+
+    // 2. Dự phòng cho máy tính hoặc trình duyệt cũ
+    if (audioRef.current) {
+      audioRef.current.volume = targetVolume;
+    }
+  };
+
+  // Lắng nghe sự kiện YouTube Player
+  useEffect(() => {
+    const handleYouTubeMessage = (event) => {
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        if (data && data.event === 'onStateChange') {
+          if (data.info === 1) {
+            setIsVideoPlaying(true);
+          } else if (data.info === 2 || data.info === 0) {
+            setIsVideoPlaying(false);
+          }
+        }
+      } catch {
+        // Bỏ qua các bản tin khác
+      }
+    };
+
+    window.addEventListener('message', handleYouTubeMessage);
+    return () => {
+      window.removeEventListener('message', handleYouTubeMessage);
+    };
+  }, []);
+
+  // TỰ ĐỘNG HẠ NHẠC KHI CHỌN ĐỊA DANH HOẶC KHI VIDEO CHẠY (HOẠT ĐỘNG TRÊN IPHONE)
+  useEffect(() => {
+    if (!audioRef.current) return;
+
+    if (selectedEvent || isVideoPlaying) {
+      fadeVolume(0.05, 0.5); // Giảm xuống 0.05 trong 0.5 giây
+    } else {
+      fadeVolume(0.2, 1.2);  // Tăng êm dịu lên 0.2 trong 1.2 giây
+    }
+  }, [selectedEvent, isVideoPlaying]);
+
+  // Dọn dẹp tài nguyên
   useEffect(() => {
     return () => {
+      if (audioCtxRef.current) {
+        audioCtxRef.current.close().catch(() => {});
+      }
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
@@ -262,23 +338,27 @@ export default function HistoricalMap() {
     };
   }, []);
 
-  // Xử lý khi đồng ý bật nhạc ở popup xin phép
+  // Xử lý bật nhạc khi người dùng bấm đồng ý ở hộp thoại
   const handleEnableAudio = () => {
     const audio = getAudioInstance();
+    if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+      audioCtxRef.current.resume();
+    }
     audio.play()
       .then(() => setIsPlayingMusic(true))
       .catch((err) => console.error("Lỗi phát audio:", err));
     setShowAudioPrompt(false);
   };
 
-  // Xử lý khi từ chối bật nhạc
   const handleDismissAudio = () => {
     setShowAudioPrompt(false);
   };
 
-  // Bật/tắt bằng nút biểu tượng loa
   const toggleMusic = () => {
     const audio = getAudioInstance();
+    if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
+      audioCtxRef.current.resume();
+    }
     if (audio.paused) {
       audio.play().catch((err) => console.error("Lỗi khi mở nhạc:", err));
     } else {
@@ -292,17 +372,24 @@ export default function HistoricalMap() {
       timelineRef.current.scrollTo({ left: 0, behavior: 'smooth' });
     }
     if (selectedEvent && categoryKey !== 'ALL' && selectedEvent.category !== categoryKey) {
+      setIsVideoPlaying(false);
       setSelectedEvent(null);
     }
   };
 
   const handleSelectEvent = (ev) => {
+    setIsVideoPlaying(false);
     setSelectedEvent(ev);
     if (mapInstanceRef.current) {
       const isMobile = window.innerWidth <= 768;
       const targetLat = isMobile ? ev.coords[0] - 0.4 : ev.coords[0];
       mapInstanceRef.current.flyTo([targetLat, ev.coords[1]], 8.5, { duration: 1.0 });
     }
+  };
+
+  const handleCloseSidebar = () => {
+    setIsVideoPlaying(false);
+    setSelectedEvent(null);
   };
 
   const scrollTimeline = (direction) => {
@@ -314,13 +401,13 @@ export default function HistoricalMap() {
 
   return (
     <div className="map-page-layout">
-      {/* 1. HEADER (TỰ ĐỘNG THU GỌN 2 TẦNG TRÊN ĐIỆN THOẠI) */}
+      {/* 1. HEADER */}
       <header className="map-header">
         <div className="header-top-row">
           <div className="header-brand">
             <span className="brand-flag">☭</span>
             <div className="brand-titles">
-              <h1>BẢN ĐỒ SỐ HÓA(1939 - 1945)</h1>
+              <h1>BẢN ĐỒ CHIẾN LƯỢC (1939 - 1945)</h1>
               <p>Cách mạng Tháng Tám toàn thắng</p>
             </div>
           </div>
@@ -339,12 +426,11 @@ export default function HistoricalMap() {
               onClick={() => setShowInfoModal(true)}
               title="Xem tác giả & tài liệu"
             >
-              Tác giả & Tài liệu
+              📖 Tác giả & Tài liệu
             </button>
           </div>
         </div>
 
-        {/* Danh mục lọc vuốt ngang */}
         <div className="filter-bar">
           {categories.map((cat) => (
             <button
@@ -358,10 +444,10 @@ export default function HistoricalMap() {
         </div>
       </header>
 
-      {/* 2. KHUNG HIỂN THỊ BẢN ĐỒ */}
+      {/* 2. BẢN ĐỒ */}
       <div className="map-viewport" ref={mapContainerRef} />
 
-      {/* 3. THANH ĐIỀU HƯỚNG MỐC THỜI GIAN ĐÁY MÀN HÌNH */}
+      {/* 3. THANH DÒNG THỜI GIAN ĐÁY */}
       <div className={`timeline-wrapper ${selectedEvent ? 'with-sidebar' : ''}`}>
         <button
           className="scroll-btn prev desktop-only"
@@ -394,15 +480,15 @@ export default function HistoricalMap() {
         </button>
       </div>
 
-      {/* 4. SIDEBAR CHI TIẾT (MÁY TÍNH: TRƯỢT PHẢI - MOBILE: BOTTOM SHEET TỪ ĐÁY) */}
+      {/* 4. SIDEBAR CHI TIẾT SỰ KIỆN */}
       <aside className={`info-sidebar ${selectedEvent ? 'open' : ''}`}>
         {selectedEvent && (
           <div className="sidebar-inner">
-            <div className="mobile-sheet-handle" onClick={() => setSelectedEvent(null)} />
+            <div className="mobile-sheet-handle" onClick={handleCloseSidebar} />
 
             <button
               className="close-sidebar-btn"
-              onClick={() => setSelectedEvent(null)}
+              onClick={handleCloseSidebar}
               title="Đóng bảng"
             >
               ✕
@@ -422,9 +508,12 @@ export default function HistoricalMap() {
             <div className="video-card">
               <iframe
                 title={selectedEvent.title}
-                src={selectedEvent.videoEmbed}
+                src={`${selectedEvent.videoEmbed}?enablejsapi=1`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
+                onLoad={(e) => {
+                  e.target.contentWindow?.postMessage('{"event":"listening"}', '*');
+                }}
               />
             </div>
 
@@ -440,7 +529,7 @@ export default function HistoricalMap() {
         )}
       </aside>
 
-      {/* 5. CỬA SỔ MODAL THÔNG TIN TÁC GIẢ & TÀI LIỆU */}
+      {/* 5. POPUP TÁC GIẢ & TÀI LIỆU */}
       {showInfoModal && (
         <div className="modal-backdrop" onClick={() => setShowInfoModal(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
@@ -507,7 +596,7 @@ export default function HistoricalMap() {
                   </div>
 
                   <div className="criteria-box">
-                    <strong>Đạt chuẩn 4 tiêu chí đánh giá môn học:</strong> Đúng kiến thức lịch sử (30đ), Khai thác tư liệu (20đ), Tính sáng tạo (30đ) và Tính ứng dụng thực tiễn (20đ)[cite: 1].
+                    <strong>Đạt chuẩn 4 tiêu chí đánh giá môn học:</strong> Đúng kiến thức lịch sử (30đ), Khai thác tư liệu (20đ), Tính sáng tạo (30đ) và Tính ứng dụng thực tiễn (20đ).
                   </div>
                 </div>
               ) : (
@@ -518,21 +607,21 @@ export default function HistoricalMap() {
                       <strong>1. Giáo trình Lịch sử Đảng Cộng sản Việt Nam</strong>, NXB Chính trị quốc gia Sự thật.
                     </li>
                     <li>
-                      <strong>2. Văn kiện Đảng Toàn tập (Tập 7: 1940 – 1945)</strong>: Nghị quyết Hội nghị TW 6, TW 7 và TW 8[cite: 3].
+                      <strong>2. Văn kiện Đảng Toàn tập (Tập 7: 1940 – 1945)</strong>: Nghị quyết Hội nghị TW 6, TW 7 và TW 8.
                     </li>
                     <li>
-                      <strong>3. Chỉ thị "Nhật - Pháp bắn nhau và hành động của chúng ta"</strong> (12/03/1945)[cite: 3].
+                      <strong>3. Chỉ thị "Nhật - Pháp bắn nhau và hành động của chúng ta"</strong> (12/03/1945).
                     </li>
                     <li>
-                      <strong>4. Quân lệnh số 1</strong> (13/08/1945) & Tuyên ngôn Độc lập (02/09/1945)[cite: 3].
+                      <strong>4. Quân lệnh số 1</strong> (13/08/1945) & Tuyên ngôn Độc lập (02/09/1945).
                     </li>
                   </ul>
 
                   <h5 className="section-subtitle" style={{ marginTop: '16px' }}>BÁO CHÍ CÁCH MẠNG & PHIM TƯ LIỆU:</h5>
                   <ul className="doc-list">
-                    <li>• Báo <em>Cờ Giải phóng</em>, Báo <em>Độc lập</em>, Báo <em>Việt Nam Độc lập</em>[cite: 3].</li>
-                    <li>• Đề cương về Văn hóa Việt Nam (1943)[cite: 3].</li>
-                    <li>• Phim tư liệu và hình ảnh lưu trữ: Đài Truyền hình Việt Nam (VTV) & Bảo tàng Lịch sử Quốc gia[cite: 1].</li>
+                    <li>• Báo <em>Cờ Giải phóng</em>, Báo <em>Độc lập</em>, Báo <em>Việt Nam Độc lập</em>.</li>
+                    <li>• Đề cương về Văn hóa Việt Nam (1943).</li>
+                    <li>• Phim tư liệu và hình ảnh lưu trữ: Đài Truyền hình Việt Nam (VTV) & Bảo tàng Lịch sử Quốc gia.</li>
                   </ul>
                 </div>
               )}
