@@ -32,17 +32,17 @@ const historicalEvents = [
     date: '13/01/1941',
     category: 'Khởi nghĩa vũ trang',
     coords: [18.9167, 105.3000],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/tWLqY8ZT2NA',
     desc: 'Cuộc binh biến do Đội Cung (Nguyễn Văn Cung) chỉ huy cùng các binh lính người Việt yêu nước trong quân đội Pháp nổi dậy tại đồn Rạng và tiến về Vinh, tuy bị dập tắt nhanh chóng nhưng thể hiện tinh thần phản kháng bất khuất.',
     highlight: 'Phát súng báo hiệu tinh thần binh lính giác ngộ theo tiếng gọi non sông.'
   },
   {
     id: 'pac-bo',
-    title: 'Pác Bó: Bác Hồ Về Nước & Hội Nghị TW 8',
+    title: 'Pác Bó: Bác Hồ Về Nước & Hội Nghị Trung Ương 8',
     date: '01/1941 – 05/1941',
     category: 'Chủ trương chiến lược',
     coords: [22.9818, 106.0506],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/WKcXjaqJY04',
     desc: 'Lãnh tụ Nguyễn Ái Quốc về nước sau 30 năm bôn ba và chủ trì Hội nghị Trung ương 8 (5/1941) tại lán Khuổi Nặm. Hội nghị hoàn chỉnh chủ trương chuyển hướng chiến lược: đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, quyết định thành lập Mặt trận Việt Minh và coi chuẩn bị khởi nghĩa vũ trang là nhiệm vụ trung tâm.',
     highlight: 'Hoàn chỉnh đường lối cách mạng giải phóng dân tộc.'
   },
@@ -52,7 +52,7 @@ const historicalEvents = [
     date: '22/12/1944',
     category: 'Căn cứ & Quân sự',
     coords: [22.6105, 105.8972],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/k7w4ZGshME4',
     desc: 'Tại khu rừng giữa hai tổng Hoàng Hoa Thám và Trần Hưng Đạo, Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập gồm 34 chiến sĩ do đồng chí Võ Nguyên Giáp chỉ huy. Đội đã lập nên chiến thắng Phai Khắt, Nà Ngần vang dội ngay sau khi ra đời.',
     highlight: 'Tiền thân của Quân đội nhân dân Việt Nam anh hùng.'
   },
@@ -62,7 +62,7 @@ const historicalEvents = [
     date: '15/05/1945',
     category: 'Cao trào kháng Nhật',
     coords: [21.3444, 105.9861],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/g0ib84B6s0A',
     desc: 'Sau chỉ thị "Nhật - Pháp bắn nhau và hành động của chúng ta" (12/3/1945), Hội nghị quyết định thống nhất Việt Nam Tuyên truyền Giải phóng quân và Cứu quốc quân thành Việt Nam Giải phóng quân, phát triển lực lượng bán vũ trang và xây dựng 7 chiến khu trong cả nước.',
     highlight: 'Hợp nhất toàn bộ lực lượng vũ trang chuẩn bị chớp thời cơ.'
   },
@@ -72,7 +72,7 @@ const historicalEvents = [
     date: '13 – 16/08/1945',
     category: 'Tổng khởi nghĩa',
     coords: [21.7589, 105.3789],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/32tXt4Tfsm0',
     desc: 'Tại Thủ đô Khu Giải phóng Tân Trào, Ủy ban Khởi nghĩa toàn quốc ban bố "Quân lệnh số 1" vào đêm 13/8 phát động Tổng khởi nghĩa. Đại hội Quốc dân (16/8) thông qua 10 chính sách lớn của Việt Minh và bầu Ủy ban Dân tộc Giải phóng Việt Nam do Bác Hồ làm Chủ tịch.',
     highlight: '“Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập!”'
   },
@@ -82,7 +82,7 @@ const historicalEvents = [
     date: '19/08/1945',
     category: 'Tổng khởi nghĩa',
     coords: [21.0245, 105.8575],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/fCqgLY4QqeE',
     desc: 'Cuộc mít tinh lớn tại Nhà hát Thành phố nhanh chóng biến thành cuộc biểu tình vũ trang thị uy. Quần chúng cách mạng có lực lượng tự vệ hỗ trợ đã đánh chiếm Phủ Khâm sai, Tòa Thị chính, Trại Bảo an binh, giành toàn bộ chính quyền về tay nhân dân.',
     highlight: 'Thắng lợi ở Hà Nội tạo hiệu ứng dây chuyền cổ vũ cả nước nổi dậy.'
   },
@@ -92,7 +92,7 @@ const historicalEvents = [
     date: '23/08/1945',
     category: 'Tổng khởi nghĩa',
     coords: [16.4637, 107.5909],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/m5u5Rc-QxX4',
     desc: 'Nhân dân Thừa Thiên - Huế dưới sự lãnh đạo của Mặt trận Việt Minh đồng loạt nổi dậy khởi nghĩa giành chính quyền thắng lợi. Ngày 30/8/1945, vua Bảo Đại đọc Chiếu thoái vị và trao nộp ấn kiếm, chấm dứt chế độ phong kiến tồn tại hàng ngàn năm.',
     highlight: 'Xóa bỏ hoàn toàn ngai vàng phong kiến chuyên chế.'
   },
@@ -102,7 +102,7 @@ const historicalEvents = [
     date: '25/08/1945',
     category: 'Tổng khởi nghĩa',
     coords: [10.7769, 106.7009],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/FOMRPr1TXHk',
     desc: 'Hơn 1 triệu đồng bào Sài Gòn - Chợ Lớn và các tỉnh lân cận rầm rộ xuống đường biểu tình vũ trang, chiếm các công sở chỉ huy đầu não của địch. Cuộc khởi nghĩa toàn thắng chớp nhoáng và trọn vẹn.',
     highlight: 'Góp phần quyết định đưa cuộc Tổng khởi nghĩa 15 ngày toàn thắng.'
   },
@@ -112,7 +112,7 @@ const historicalEvents = [
     date: '02/09/1945',
     category: 'Thắng lợi hoàn toàn',
     coords: [21.0378, 105.8344],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/jHmz5FgYpYo',
     desc: 'Tại Quảng trường Ba Đình rực rỡ cờ hoa, Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập bất hủ, tuyên bố nước Việt Nam Dân chủ Cộng hòa ra đời, chấm dứt hơn 80 năm đô hộ của thực dân Pháp và ách thống trị của phát xít Nhật.',
     highlight: 'Mở ra kỷ nguyên độc lập, tự do cho dân tộc Việt Nam.'
   }
