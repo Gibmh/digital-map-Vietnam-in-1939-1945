@@ -56,8 +56,8 @@ const historicalEvents = [
     date: '22/12/1944',
     category: 'Căn cứ & Quân sự',
     coords: [22.6105, 105.8972],
-    videoEmbed: 'https://www.youtube-nocookie.com/embed/k7w4ZGshME4',
-    videoSource: 'Kênh Ánh sáng soi đường (Tư liệu QĐND)',
+    videoEmbed: 'https://www.youtube-nocookie.com/embed/T591PKbi3Jc',
+    videoSource: 'QPVN - Truyền Hình Quốc Phòng Việt Nam',
     desc: 'Tại khu rừng giữa hai tổng Hoàng Hoa Thám và Trần Hưng Đạo, Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập gồm 34 chiến sĩ do đồng chí Võ Nguyên Giáp chỉ huy. Đội đã lập nên chiến thắng Phai Khắt, Nà Ngần vang dội ngay sau khi ra đời.',
     highlight: 'Tiền thân của Quân đội nhân dân Việt Nam anh hùng.'
   },
@@ -101,7 +101,7 @@ const historicalEvents = [
     category: 'Tổng khởi nghĩa',
     coords: [16.4637, 107.5909],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/m5u5Rc-QxX4',
-    videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
+    videoSource: 'VNAMEDIA - Trung tâm nội dung số và truyền thông',
     desc: 'Nhân dân Thừa Thiên - Huế dưới sự lãnh đạo của Mặt trận Việt Minh đồng loạt nổi dậy khởi nghĩa giành chính quyền thắng lợi. Ngày 30/8/1945, vua Bảo Đại đọc Chiếu thoái vị và trao nộp ấn kiếm, chấm dứt chế độ phong kiến tồn tại hàng ngàn năm.',
     highlight: 'Xóa bỏ hoàn toàn ngai vàng phong kiến chuyên chế.'
   },
@@ -621,37 +621,56 @@ export default function HistoricalMap() {
                     <h4>ĐỀ TÀI: BẢN ĐỒ SỐ ĐỊA BÀN CHIẾN LƯỢC (1939 - 1945)</h4>
                     <p>Ứng dụng công nghệ bản đồ tương tác số hóa không gian lịch sử thời kỳ tiền khởi nghĩa và Cách mạng Tháng Tám.</p>
                   </div>
-
+                  <h5 className="section-subtitle">GIÁO VIÊN HƯỚNG DẪN:</h5> 
+                  <div className="author-grid">
+                    <div className="author-item">
+                      <div className="author-avatar">★</div>
+                      <div className="author-meta">
+                        <span className="name">Thầy Nguyễn Văn Chung</span>
+                      </div>
+                    </div>
+                  </div>
                   <h5 className="section-subtitle">THÀNH VIÊN NHÓM THỰC HIỆN:</h5>
                   <div className="author-grid">
                     <div className="author-item">
                       <div className="author-avatar">★</div>
                       <div className="author-meta">
-                        <span className="name">Nguyễn Văn A (Nhóm trưởng)</span>
-                        <span className="desc">Nhiệm vụ: Lập trình Leaflet & Dữ liệu mốc son</span>
-                        <span className="sub">MSSV: 2021xxxx • Lớp: LSQH01</span>
+                        <span className="name">Huỳnh Thanh Huy (Nhóm trưởng)</span>
+                        <span className="sub">MSSV: 24149138</span>
                       </div>
                     </div>
                     <div className="author-item">
                       <div className="author-avatar">★</div>
                       <div className="author-meta">
-                        <span className="name">Trần Thị B</span>
-                        <span className="desc">Nhiệm vụ: Biên tập tư liệu, văn kiện và video</span>
-                        <span className="sub">MSSV: 2021xxxx • Lớp: LSQH01</span>
+                        <span className="name">Nguyễn Minh Tú</span>
+                        <span className="sub">MSSV: 25134117</span>
                       </div>
                     </div>
                     <div className="author-item">
                       <div className="author-avatar">★</div>
                       <div className="author-meta">
-                        <span className="name">Lê Văn C</span>
-                        <span className="desc">Nhiệm vụ: Thiết kế giao diện UI/UX Mobile & CSS</span>
-                        <span className="sub">MSSV: 2021xxxx • Lớp: LSQH01</span>
+                        <span className="name">Phạm Minh Hoàng</span>
+                        <span className="sub">MSSV: 24134026</span>
+                      </div>
+                    </div>
+                    <div className="author-item">
+                      <div className="author-avatar">★</div>
+                      <div className="author-meta">
+                        <span className="name">Võ Thị Hồng Phương</span>
+                        <span className="sub">MSSV: 24128156</span>
+                      </div>
+                    </div>
+                    <div className="author-item">
+                      <div className="author-avatar">★</div>
+                      <div className="author-meta">
+                        <span className="name">Nguyễn Tấn Hiếu</span>
+                        <span className="sub">MSSV: 24128064</span>
                       </div>
                     </div>
                   </div>
 
                   <div className="criteria-box">
-                    <strong>Đạt chuẩn 4 tiêu chí đánh giá môn học:</strong> Đúng kiến thức lịch sử (30đ), Khai thác tư liệu (20đ), Tính sáng tạo (30đ) và Tính ứng dụng thực tiễn (20đ).
+                    <strong>Note:</strong> Đây là sản phẩm môn học Lịch sử Đảng của nhóm 1 lớp LLCT220514 - nhóm 4 - kì I đợt 1 năm học 2026-2027 - Trường Đại học Công nghệ Kỹ thuật TP.HCM.
                   </div>
                 </div>
               ) : (
