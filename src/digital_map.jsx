@@ -4,7 +4,7 @@ import 'leaflet/dist/leaflet.css';
 import './digital_map.css';
 import themeSong from './themesong.mp3';
 
-// 1. TẬP DỮ LIỆU CÁC MỐC LỊCH SỬ PHONG TRÀO 1939 - 1945
+// 1. TẬP DỮ LIỆU ĐƯỢC CHUẨN HÓA & TINH GỌN TỪ TÀI LIỆU LỊCH SỬ ĐẢNG
 const historicalEvents = [
   {
     id: 'bac-son',
@@ -14,8 +14,18 @@ const historicalEvents = [
     coords: [21.9038, 106.3262],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/nkuDKjhNTy0',
     videoSource: 'Đài Phát thanh & Truyền hình Lạng Sơn',
-    desc: 'Khởi nghĩa Bắc Sơn nổ ra, đội du kích Bắc Sơn được thành lập, đánh dấu bước phát triển mới của đấu tranh vũ trang vì độc lập dân tộc. Đội sau này phát triển thành Cứu quốc quân.',
-    highlight: 'Ra đời Đội du kích Bắc Sơn – mầm mống lực lượng vũ trang cách mạng.'
+    highlight: 'Ra đời Đội du kích Bắc Sơn – mầm mống đầu tiên của lực lượng vũ trang cách mạng.',
+    stats: [
+      { label: 'Nghĩa quân tham gia', val: '~600 người' },
+      { label: 'Đội du kích ban đầu', val: '20 chiến sĩ' }
+    ],
+    figures: ['Hoàng Văn Hán', 'Chu Văn Tấn', 'Trần Đăng Ninh'],
+    timelineSteps: [
+      { time: '27/09/1940', text: 'Nhân lúc tàn quân Pháp thua chạy trước phát xít Nhật, nhân dân tước vũ khí địch và đánh chiếm đồn Mỏ Nhài.' },
+      { time: '16/10/1940', text: 'Xứ ủy Bắc Kỳ cử Trần Đăng Ninh về phối hợp Chu Văn Tấn thành lập Đội du kích Bắc Sơn.' },
+      { time: '28/10/1940', text: 'Pháp - Nhật thỏa hiệp đàn áp; nghĩa quân rút vào căn cứ Võ Nhai bảo toàn lực lượng.' }
+    ],
+    significance: 'Đánh dấu bước chuyển quan trọng từ đấu tranh chính trị sang khởi nghĩa vũ trang tự vệ, tiền thân của Cứu quốc quân.'
   },
   {
     id: 'nam-ky',
@@ -25,8 +35,18 @@ const historicalEvents = [
     coords: [10.8856, 106.5946],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/cbdFNXkPiLk',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    desc: 'Khởi nghĩa bùng nổ mạnh mẽ tại nhiều tỉnh Nam Bộ với tinh thần quả cảm phi thường. Dù bị thực dân Pháp đàn áp khốc liệt và chịu tổn thất nặng nề, khởi nghĩa Nam Kỳ đã để lại bài học xương máu về khởi nghĩa vũ trang.',
-    highlight: 'Lần đầu tiên lá cờ đỏ sao vàng xuất hiện trong phong trào đấu tranh.'
+    highlight: 'Lần đầu tiên lá cờ đỏ sao vàng xuất hiện trong phong trào đấu tranh cách mạng.',
+    stats: [
+      { label: 'Quy mô nổi dậy', val: '18 tỉnh thành' },
+      { label: 'Giữ chính quyền (Mỹ Tho)', val: '49 ngày (54/56 xã)' }
+    ],
+    figures: ['Phan Đăng Lưu', 'Tạ Uyên', 'Nguyễn Thị Minh Khai', 'Nguyễn Thị Bảy'],
+    timelineSteps: [
+      { time: '20 - 22/11/1940', text: 'Lệnh khởi nghĩa đã phát đi dù Trung ương khuyên tạm hoãn; nhiều cán bộ chủ chốt bị bắt trước giờ G.' },
+      { time: 'Đêm 22 - 23/11/1940', text: 'Đồng loạt bùng nổ từ Biên Hòa đến Cà Mau; phá đồn bót, xử lý phản động, cờ đỏ sao vàng tung bay.' },
+      { time: '12/1940', text: 'Thực dân Pháp dội bom đàn áp tàn khốc; nghĩa quân rút về lập căn cứ tại U Minh và Đồng Tháp Mười.' }
+    ],
+    significance: 'Cuộc diễn tập vũ trang quy mô nhất Nam Bộ; đúc kết bài học xương máu về chớp thời cơ và xây dựng lực lượng.'
   },
   {
     id: 'do-luong',
@@ -36,52 +56,102 @@ const historicalEvents = [
     coords: [18.9167, 105.3000],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/tWLqY8ZT2NA',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    desc: 'Cuộc binh biến do Đội Cung (Nguyễn Văn Cung) chỉ huy cùng các binh lính người Việt yêu nước trong quân đội Pháp nổi dậy tại đồn Rạng và tiến về Vinh, tuy bị dập tắt nhanh chóng nhưng thể hiện tinh thần phản kháng bất khuất.',
-    highlight: 'Phát súng báo hiệu tinh thần binh lính giác ngộ theo tiếng gọi non sông.'
+    highlight: 'Phát súng báo hiệu tinh thần binh lính người Việt giác ngộ theo tiếng gọi non sông.',
+    stats: [
+      { label: 'Địa bàn xuất phát', val: 'Đồn Chợ Rạng' },
+      { label: 'Chiến sĩ kiên trung', val: '11 đồng chí hy sinh' }
+    ],
+    figures: ['Đội Cung (Nguyễn Văn Cung)'],
+    timelineSteps: [
+      { time: 'Tối 13/01/1941', text: 'Binh lính đồn Chợ Rạng bất bình vì bị bắt sang Lào làm bia đỡ đạn, đã nổi dậy đánh chiếm đồn Đô Lương.' },
+      { time: 'Đêm 13/01/1941', text: 'Đoàn quân lên ôtô hành quân thần tốc về thành Vinh định phối hợp đánh chiếm cứ điểm nhưng kế hoạch bại lộ.' },
+      { time: '24/04/1941', text: 'Đội Cung cùng 10 chiến sĩ kiên cường hy sinh trước họng súng quân thù tại pháp trường Vinh.' }
+    ],
+    significance: 'Khẳng định tinh thần yêu nước bất khuất và khả năng giác ngộ cách mạng của binh lính người Việt trong quân đội Pháp.'
   },
   {
     id: 'pac-bo',
-    title: 'Pác Bó: Bác Hồ Về Nước & Hội Nghị Trung Ương 8',
-    date: '01/1941 – 05/1941',
+    title: 'Pác Bó: Bác Hồ Về Nước & Hội Nghị TW 8',
+    date: '28/01/1941 – 19/05/1941',
     category: 'Chủ trương chiến lược',
     coords: [22.9818, 106.0506],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/WKcXjaqJY04',
     videoSource: 'Đài Truyền hình Việt Nam (VTV3)',
-    desc: 'Lãnh tụ Nguyễn Ái Quốc về nước sau 30 năm bôn ba và chủ trì Hội nghị Trung ương 8 (5/1941) tại lán Khuổi Nặm. Hội nghị hoàn chỉnh chủ trương chuyển hướng chiến lược: đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, quyết định thành lập Mặt trận Việt Minh và coi chuẩn bị khởi nghĩa vũ trang là nhiệm vụ trung tâm.',
-    highlight: 'Hoàn chỉnh đường lối cách mạng giải phóng dân tộc.'
+    highlight: 'Quyết định lịch sử: Quyền lợi bộ phận, giai cấp phải đặt dưới quyền lợi sinh tử của toàn dân tộc.',
+    stats: [
+      { label: 'Hành trình bôn ba', val: '30 năm trở về' },
+      { label: 'Hội nghị Trung ương', val: 'Khóa I (lần 8)' }
+    ],
+    figures: ['Lãnh tụ Nguyễn Ái Quốc (Chủ trì)'],
+    timelineSteps: [
+      { time: '28/01/1941', text: 'Lãnh tụ Nguyễn Ái Quốc vượt mốc 108 biên giới về lán Khuổi Nặm (Pác Bó, Cao Bằng) trực tiếp lãnh đạo.' },
+      { time: '10 – 19/05/1941', text: 'Chủ trì Hội nghị Trung ương 8, chuyển hướng chỉ đạo chiến lược: đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.' },
+      { time: '19/05/1941', text: 'Thành lập Mặt trận Việt Minh nhằm tập hợp rộng rãi mọi tầng lớp nhân dân yêu nước.' }
+    ],
+    significance: 'Hoàn chỉnh đường lối giương cao ngọn cờ dân tộc, tạo kim chỉ nam dẫn đến thắng lợi Cách mạng Tháng Tám.'
   },
   {
     id: 'tran-hung-dao',
     title: 'Thành lập Đội VN Tuyên truyền Giải phóng quân',
     date: '22/12/1944',
-    category: 'Căn cứ & Quân sự',
+    category: 'Cao trào kháng Nhật',
     coords: [22.6105, 105.8972],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/T591PKbi3Jc',
     videoSource: 'QPVN - Truyền Hình Quốc Phòng Việt Nam',
-    desc: 'Tại khu rừng giữa hai tổng Hoàng Hoa Thám và Trần Hưng Đạo, Đội Việt Nam Tuyên truyền Giải phóng quân được thành lập gồm 34 chiến sĩ do đồng chí Võ Nguyên Giáp chỉ huy. Đội đã lập nên chiến thắng Phai Khắt, Nà Ngần vang dội ngay sau khi ra đời.',
-    highlight: 'Tiền thân của Quân đội nhân dân Việt Nam anh hùng.'
+    highlight: 'Đội quân đàn anh – tiền thân vẻ vang của Quân đội nhân dân Việt Nam anh hùng.',
+    stats: [
+      { label: 'Quân số ban đầu', val: '34 chiến sĩ' },
+      { label: 'Chiến thắng mở màn', val: 'Phai Khắt & Nà Ngần' }
+    ],
+    figures: ['Võ Nguyên Giáp (Chỉ huy)', 'Hoàng Sâm (Đội trưởng)'],
+    timelineSteps: [
+      { time: '12/1944', text: 'Bác Hồ gửi chỉ thị đựng trong bao thuốc lá: "Chính trị trọng hơn quân sự, tập trung lực lượng lập đội chủ lực".' },
+      { time: '22/12/1944', text: 'Lễ thành lập cử hành tại khu rừng Trần Hưng Đạo (Nguyên Bình, Cao Bằng) với 34 chiến sĩ.' },
+      { time: '25 – 26/12/1944', text: 'Đánh úp tiêu diệt gọn đồn Phai Khắt và Nà Ngần theo chiến thuật "lai vô ảnh, khứ vô tung".' }
+    ],
+    significance: 'Đánh dấu sự ra đời của lực lượng vũ trang tập trung, kết hợp nhuần nhuyễn đấu tranh chính trị với quân sự.'
   },
   {
     id: 'hiep-hoa',
     title: 'Hội nghị Quân sự cách mạng Bắc Kỳ',
-    date: '15/05/1945',
+    date: '15/04/1945 – 20/04/1945',
     category: 'Cao trào kháng Nhật',
     coords: [21.3444, 105.9861],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/g0ib84B6s0A',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    desc: 'Sau chỉ thị "Nhật - Pháp bắn nhau và hành động của chúng ta" (12/3/1945), Hội nghị quyết định thống nhất Việt Nam Tuyên truyền Giải phóng quân và Cứu quốc quân thành Việt Nam Giải phóng quân, phát triển lực lượng bán vũ trang và xây dựng 7 chiến khu trong cả nước.',
-    highlight: 'Hợp nhất toàn bộ lực lượng vũ trang chuẩn bị chớp thời cơ.'
+    highlight: 'Hợp nhất toàn bộ lực lượng vũ trang, chuẩn bị trực tiếp chớp thời cơ Tổng khởi nghĩa.',
+    stats: [
+      { label: 'Chiến khu cả nước', val: 'Quy hoạch 7 chiến khu' },
+      { label: 'Quân đội thống nhất', val: '13 đại đội chủ lực' }
+    ],
+    figures: ['Trường Chinh (Chủ trì)', 'Võ Nguyên Giáp', 'Trần Đăng Ninh', 'Chu Văn Tấn'],
+    timelineSteps: [
+      { time: '15/04/1945', text: 'Ban Thường vụ Trung ương Đảng họp tại Hiệp Hòa (Bắc Giang), xác định nhiệm vụ quân sự lên trên hết.' },
+      { time: 'Kế hoạch tác chiến', text: 'Đẩy mạnh chiến tranh du kích, phá kho thóc Nhật cứu đói, xây dựng căn cứ địa kháng Nhật.' },
+      { time: '15/05/1945', text: 'Thống nhất Việt Nam Tuyên truyền Giải phóng quân và Cứu quốc quân thành Việt Nam Giải phóng quân tại Thái Nguyên.' }
+    ],
+    significance: 'Bước phát triển lý luận quân sự nhảy vọt, hợp nhất thống nhất lực lượng vũ trang trên toàn quốc.'
   },
   {
     id: 'tan-trao',
-    title: 'Tân Trào: Quân Lệnh Số 1 & Đại Hội Quốc Dân',
-    date: '13 – 16/08/1945',
+    title: 'Tân Trào: Quân Lệnh Số 1 & Quốc Dân Đại Hội',
+    date: '13/08/1945 – 16/08/1945',
     category: 'Tổng khởi nghĩa',
     coords: [21.7589, 105.3789],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/32tXt4Tfsm0',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    desc: 'Tại Thủ đô Khu Giải phóng Tân Trào, Ủy ban Khởi nghĩa toàn quốc ban bố "Quân lệnh số 1" vào đêm 13/8 phát động Tổng khởi nghĩa. Đại hội Quốc dân (16/8) thông qua 10 chính sách lớn của Việt Minh và bầu Ủy ban Dân tộc Giải phóng Việt Nam do Bác Hồ làm Chủ tịch.',
-    highlight: '“Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập!”'
+    highlight: '“Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập!”',
+    stats: [
+      { label: 'Đại biểu triệu tập', val: '>60 đại biểu toàn quốc' },
+      { label: 'Chương trình hành động', val: '10 chính sách Việt Minh' }
+    ],
+    figures: ['Hồ Chí Minh', 'Trường Chinh', 'Vũ Oanh'],
+    timelineSteps: [
+      { time: '23h ngày 13/08', text: 'Ủy ban Khởi nghĩa toàn quốc ban bố Quân lệnh số 1 – chính thức phát động Tổng khởi nghĩa cả nước.' },
+      { time: '16/08/1945', text: 'Khai mạc Quốc dân Đại hội tại đình Tân Trào, thông qua lệnh khởi nghĩa và 10 chính sách lớn.' },
+      { time: 'Bầu Chính phủ', text: 'Bầu Ủy ban Dân tộc Giải phóng Việt Nam do Chủ tịch Hồ Chí Minh đứng đầu.' }
+    ],
+    significance: 'Đóng vai trò như một Quốc hội lâm thời, biểu thị ý chí sắt đá của toàn dân tộc vùng lên giành độc lập.'
   },
   {
     id: 'ha-noi',
@@ -91,8 +161,18 @@ const historicalEvents = [
     coords: [21.0245, 105.8575],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/fCqgLY4QqeE',
     videoSource: 'Trung tâm Tin tức VTV24 (Đài THVN)',
-    desc: 'Cuộc mít tinh lớn tại Nhà hát Thành phố nhanh chóng biến thành cuộc biểu tình vũ trang thị uy. Quần chúng cách mạng có lực lượng tự vệ hỗ trợ đã đánh chiếm Phủ Khâm sai, Tòa Thị chính, Trại Bảo an binh, giành toàn bộ chính quyền về tay nhân dân.',
-    highlight: 'Thắng lợi ở Hà Nội tạo hiệu ứng dây chuyền cổ vũ cả nước nổi dậy.'
+    highlight: 'Thắng lợi ở Thủ đô tạo hiệu ứng dây chuyền cổ vũ mãnh liệt phong trào cả nước.',
+    stats: [
+      { label: 'Quân Nhật đóng giữ', val: '>10.000 lính (án binh)' },
+      { label: 'Thời gian thắng lợi', val: 'Trọn vẹn trong 1 ngày' }
+    ],
+    figures: ['Nguyễn Khang', 'Trần Tử Bình', 'Nguyễn Quyết'],
+    timelineSteps: [
+      { time: '17/08/1945', text: 'Biến cuộc mít tinh thân Nhật của Tổng hội Viên chức thành cuộc biểu tình tuần hành rầm rộ ủng hộ Việt Minh.' },
+      { time: 'Sáng 19/08/1945', text: 'Hàng chục vạn quần chúng kéo về Quảng trường Nhà hát Lớn mít tinh, sau đó tỏa đi chiếm các cơ quan đầu não.' },
+      { time: 'Chiều 19/08/1945', text: 'Đánh chiếm Phủ Khâm sai, Tòa Thị chính, Trại Bảo an binh; chính quyền tay sai sụp đổ hoàn toàn.' }
+    ],
+    significance: 'Mẫu mực về nghệ thuật chớp thời cơ, kết hợp áp đảo chính trị với xung kích vũ trang để giành thắng lợi không đổ máu.'
   },
   {
     id: 'hue',
@@ -101,9 +181,19 @@ const historicalEvents = [
     category: 'Tổng khởi nghĩa',
     coords: [16.4637, 107.5909],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/m5u5Rc-QxX4',
-    videoSource: 'VNAMEDIA - Trung tâm nội dung số và truyền thông',
-    desc: 'Nhân dân Thừa Thiên - Huế dưới sự lãnh đạo của Mặt trận Việt Minh đồng loạt nổi dậy khởi nghĩa giành chính quyền thắng lợi. Ngày 30/8/1945, vua Bảo Đại đọc Chiếu thoái vị và trao nộp ấn kiếm, chấm dứt chế độ phong kiến tồn tại hàng ngàn năm.',
-    highlight: 'Xóa bỏ hoàn toàn ngai vàng phong kiến chuyên chế.'
+    videoSource: 'VNAMEDIA - Trung tâm nội dung số',
+    highlight: '“Thà làm dân một nước độc lập còn hơn làm vua một nước nô lệ” – Xóa bỏ ngai vàng phong kiến.',
+    stats: [
+      { label: 'Thời điểm tiếp quản', val: '16h ngày 23/08/1945' },
+      { label: 'Chấm dứt triều đại', val: 'Nguyễn triều hàng thế kỷ' }
+    ],
+    figures: ['Tố Hữu', 'Hồ Tùng Mậu', 'Trần Huy Liệu', 'Vua Bảo Đại'],
+    timelineSteps: [
+      { time: '20 – 22/08/1945', text: 'Phái đoàn Trung ương thành lập Ủy ban Khởi nghĩa tại Huế do Tố Hữu làm Chủ tịch, gây sức ép buộc Bảo Đại thoái vị.' },
+      { time: '23/08/1945', text: 'Hàng vạn nhân dân mít tinh tại sân vận động Huế; công bố thành lập Ủy ban Nhân dân Cách mạng lâm thời.' },
+      { time: '30/08/1945', text: 'Vua Bảo Đại đọc Chiếu thoái vị, trao nộp ấn kiếm trước cửa Ngọ Môn cho phái đoàn đại diện chính phủ.' }
+    ],
+    significance: 'Xóa bỏ hoàn toàn chế độ quân chủ phong kiến tồn tại hàng ngàn năm tại Việt Nam.'
   },
   {
     id: 'sai-gon',
@@ -113,8 +203,18 @@ const historicalEvents = [
     coords: [10.7769, 106.7009],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/FOMRPr1TXHk',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    desc: 'Hơn 1 triệu đồng bào Sài Gòn - Chợ Lớn và các tỉnh lân cận rầm rộ xuống đường biểu tình vũ trang, chiếm các công sở chỉ huy đầu não của địch. Cuộc khởi nghĩa toàn thắng chớp nhoáng và trọn vẹn.',
-    highlight: 'Góp phần quyết định đưa cuộc Tổng khởi nghĩa 15 ngày toàn thắng.'
+    highlight: 'Khí thế ngút trời đưa cuộc Tổng khởi nghĩa 15 ngày trên cả nước toàn thắng trọn vẹn.',
+    stats: [
+      { label: 'Quần chúng biểu tình', val: '>1.000.000 đồng bào' },
+      { label: 'Lực lượng xung kích', val: 'Thanh niên Tiền phong' }
+    ],
+    figures: ['Trần Văn Giàu (Chủ tịch UB Hành chánh Nam Bộ)'],
+    timelineSteps: [
+      { time: 'Tối 24/08/1945', text: 'Chiếm các mục tiêu trọng yếu: Dinh Khâm sai, bưu điện, nhà đèn, bót cảnh sát; hạ cờ quẻ ly kéo cờ đỏ sao vàng.' },
+      { time: 'Sáng 25/08/1945', text: 'Hơn một triệu quần chúng Sài Gòn – Chợ Lớn với giáo mác, tầm vông vạt nhọn rầm rộ xuống đường tuần hành.' },
+      { time: '13h ngày 25/08', text: 'Đồng chí Trần Văn Giàu tuyên bố thành lập nền Dân chủ Cộng hòa tại Nam Bộ trước hàng vạn quốc dân.' }
+    ],
+    significance: 'Đòn quyết định làm chủ sào huyệt thực dân cuối cùng, khẳng định trọn vẹn nền độc lập từ Bắc chí Nam.'
   },
   {
     id: 'ba-dinh',
@@ -124,17 +224,28 @@ const historicalEvents = [
     coords: [21.0378, 105.8344],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/jHmz5FgYpYo',
     videoSource: 'Đài Truyền hình Việt Nam (VTV)',
-    desc: 'Tại Quảng trường Ba Đình rực rỡ cờ hoa, Chủ tịch Hồ Chí Minh đọc bản Tuyên ngôn Độc lập bất hủ, tuyên bố nước Việt Nam Dân chủ Cộng hòa ra đời, chấm dứt hơn 80 năm đô hộ của thực dân Pháp và ách thống trị của phát xít Nhật.',
-    highlight: 'Mở ra kỷ nguyên độc lập, tự do cho dân tộc Việt Nam.'
+    highlight: '“Nước Việt Nam có quyền hưởng tự do và độc lập, và sự thật đã thành một nước tự do, độc lập!”',
+    stats: [
+      { label: 'Thời gian soạn thảo', val: '28 – 31/08 (48 Hàng Ngang)' },
+      { label: 'Thời khắc công bố', val: '14h00 ngày 02/09/1945' }
+    ],
+    figures: ['Chủ tịch Hồ Chí Minh', 'Kiến trúc sư Ngô Huy Quỳnh (thiết kế lễ đài)'],
+    timelineSteps: [
+      { time: '28 – 31/08/1945', text: 'Bác Hồ khởi thảo và hoàn thiện bản Tuyên ngôn Độc lập tại tầng 2 căn nhà số 48 phố Hàng Ngang.' },
+      { time: '14h ngày 02/09/1945', text: 'Trước hàng chục vạn đồng bào tại Ba Đình, Người trịnh trọng đọc Tuyên ngôn, khai sinh nước VNDCCH.' },
+      { time: 'Lời thề độc lập', text: 'Chính phủ lâm thời ra mắt và toàn thể quốc dân đồng thanh tuyên thệ quyết đem tính mạng, của cải giữ vững độc lập.' }
+    ],
+    significance: 'Mở ra kỷ nguyên mới rực rỡ: Nước Việt Nam Dân chủ Cộng hòa – Nhà nước công nông đầu tiên ở Đông Nam Á.'
   }
 ];
 
 export default function HistoricalMap() {
   const mapContainerRef = useRef(null);
   const mapInstanceRef = useRef(null);
+  const markersLayerRef = useRef(null);
   const timelineRef = useRef(null);
 
-  // Quản lý âm thanh qua HTML Audio + Web Audio API (Hỗ trợ tốt trên iOS Safari)
+  // Quản lý âm thanh
   const audioRef = useRef(null);
   const audioCtxRef = useRef(null);
   const gainNodeRef = useRef(null);
@@ -152,14 +263,15 @@ export default function HistoricalMap() {
     { key: 'Chủ trương chiến lược', label: 'Chủ trương' },
     { key: 'Khởi nghĩa vũ trang', label: 'Khởi nghĩa' },
     { key: 'Cao trào kháng Nhật', label: 'Kháng Nhật' },
-    { key: 'Tổng khởi nghĩa', label: 'Tổng khởi nghĩa' }
+    { key: 'Tổng khởi nghĩa', label: 'Tổng khởi nghĩa' },
+    { key: 'Thắng lợi hoàn toàn', label: 'Độc lập' }
   ];
 
   const filteredEvents = filterCategory === 'ALL'
     ? historicalEvents
     : historicalEvents.filter(ev => ev.category === filterCategory);
 
-  // 1. KHỞI TẠO BẢN ĐỒ GOOGLE MAPS VÀ GẮN CHỦ QUYỀN BIỂN ĐẢO
+  // 1. KHỞI TẠO BẢN ĐỒ VÀ GẮN CHỦ QUYỀN BIỂN ĐẢO
   useEffect(() => {
     if (!mapContainerRef.current) return;
 
@@ -168,10 +280,9 @@ export default function HistoricalMap() {
       mapInstanceRef.current = null;
     }
 
-    // Giới hạn biên độ bao trọn đất liền và hai quần đảo Hoàng Sa, Trường Sa
     const strictBounds = [
-      [6.5, 101.0],  // Phía Nam hạ xuống 6.5 để nhìn rõ Trường Sa
-      [26.5, 118.0]  // Phía Đông nới ra 118.0 để bao trọn Hoàng Sa & Trường Sa
+      [6.5, 101.0],
+      [26.5, 118.0]
     ];
 
     const isMobile = window.innerWidth <= 768;
@@ -188,52 +299,49 @@ export default function HistoricalMap() {
 
     L.control.zoom({ position: isMobile ? 'topright' : 'bottomright' }).addTo(map);
 
-    // Bản đồ Google Maps sắc nét
-    L.tileLayer('https://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
-      subdomains: ['mt0', 'mt1', 'mt2', 'mt3'],
+    L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
       attribution: '&copy; Google Maps',
       maxZoom: 20
     }).addTo(map);
 
-    // Nhãn Quần đảo Hoàng Sa (Đà Nẵng, Việt Nam)
+    // Nhãn Hoàng Sa
     const hoangSaBadge = L.divIcon({
       className: 'custom-island-badge',
       html: `
-        <div class="island-tag-box">
-          <span class="flag">🇻🇳</span>
+        <div class="island-tag-box" style="padding: 6px 12px; min-width: 170px; text-align: center; justify-content: center;">
+          <span class="flag" style="font-size: 18px;">🇻🇳</span>
           <div class="tag-text">
-            <strong>QĐ. HOÀNG SA</strong>
-            <small>(Đà Nẵng, Việt Nam)</small>
+            <strong style="font-size: 13px; letter-spacing: 0.5px;">QUẦN ĐẢO HOÀNG SA</strong>
+            <small style="font-size: 10.5px; opacity: 0.95;">(TP. Đà Nẵng, Việt Nam)</small>
           </div>
         </div>
       `,
-      iconSize: [140, 36],
-      iconAnchor: [70, 18]
+      iconSize: [180, 44],
+      iconAnchor: [90, 22]
     });
 
-    // Nhãn Quần đảo Trường Sa (Khánh Hòa, Việt Nam)
+    // Nhãn Trường Sa
     const truongSaBadge = L.divIcon({
       className: 'custom-island-badge',
       html: `
-        <div class="island-tag-box">
-          <span class="flag">🇻🇳</span>
+        <div class="island-tag-box" style="padding: 6px 12px; min-width: 170px; text-align: center; justify-content: center;">
+          <span class="flag" style="font-size: 18px;">🇻🇳</span>
           <div class="tag-text">
-            <strong>QĐ. TRƯỜNG SA</strong>
-            <small>(Khánh Hòa, Việt Nam)</small>
+            <strong style="font-size: 13px; letter-spacing: 0.5px;">QUẦN ĐẢO TRƯỜNG SA</strong>
+            <small style="font-size: 10.5px; opacity: 0.95;">(Khánh Hòa, Việt Nam)</small>
           </div>
         </div>
       `,
-      iconSize: [140, 36],
-      iconAnchor: [70, 18]
+      iconSize: [180, 44],
+      iconAnchor: [90, 22]
     });
 
-    // Ghim trực tiếp nhãn cố định lên tọa độ hai quần đảo
-    L.marker([16.5, 112.0], { icon: hoangSaBadge, interactive: false }).addTo(map);
+    L.marker([16.54, 112.1], { icon: hoangSaBadge, interactive: false }).addTo(map);
     L.marker([9.5, 113.5], { icon: truongSaBadge, interactive: false }).addTo(map);
 
-    const handleResize = () => {
-      map.invalidateSize();
-    };
+    markersLayerRef.current = L.layerGroup().addTo(map);
+
+    const handleResize = () => map.invalidateSize();
     window.addEventListener('resize', handleResize);
 
     mapInstanceRef.current = map;
@@ -247,16 +355,11 @@ export default function HistoricalMap() {
     };
   }, []);
 
-  // 2. HIỂN THỊ CÁC MỐC SON LỊCH SỬ TRÊN BẢN ĐỒ
+  // 2. VẼ MARKER LÊN BẢN ĐỒ
   useEffect(() => {
-    const map = mapInstanceRef.current;
-    if (!map) return;
+    if (!mapInstanceRef.current || !markersLayerRef.current) return;
 
-    map.eachLayer((layer) => {
-      if (layer instanceof L.Marker && !layer.options.icon.options.className?.includes('custom-island-badge')) {
-        map.removeLayer(layer);
-      }
-    });
+    markersLayerRef.current.clearLayers();
 
     filteredEvents.forEach((ev) => {
       const isSelected = selectedEvent?.id === ev.id;
@@ -274,18 +377,20 @@ export default function HistoricalMap() {
         iconAnchor: [18, 18]
       });
 
-      const marker = L.marker(ev.coords, { icon: customIcon }).addTo(map);
+      const marker = L.marker(ev.coords, { icon: customIcon });
       marker.on('click', () => {
         setIsVideoPlaying(false);
         setSelectedEvent(ev);
         const isMobile = window.innerWidth <= 768;
         const targetLat = isMobile ? ev.coords[0] - 0.4 : ev.coords[0];
-        map.flyTo([targetLat, ev.coords[1]], 8.5, { duration: 1.0 });
+        mapInstanceRef.current.flyTo([targetLat, ev.coords[1]], 8.5, { duration: 1.0 });
       });
-    });
-  }, [filterCategory, selectedEvent]);
 
-  // 3. KHỞI TẠO ÂM THANH VÀ WEB AUDIO API (TƯƠNG THÍCH HOÀN TOÀN IPHONE)
+      markersLayerRef.current.addLayer(marker);
+    });
+  }, [filteredEvents, selectedEvent]);
+
+  // 3. XỬ LÝ ÂM THANH
   const getAudioInstance = () => {
     if (!audioRef.current) {
       const audio = new Audio(themeSong);
@@ -297,8 +402,8 @@ export default function HistoricalMap() {
         if (AudioContext) {
           const ctx = new AudioContext();
           const gainNode = ctx.createGain();
-          gainNode.gain.value = 0.2; // Âm lượng chuẩn 20%
-          
+          gainNode.gain.value = 0.2;
+
           const source = ctx.createMediaElementSource(audio);
           source.connect(gainNode);
           gainNode.connect(ctx.destination);
@@ -307,7 +412,7 @@ export default function HistoricalMap() {
           gainNodeRef.current = gainNode;
         }
       } catch (err) {
-        console.warn("Trình duyệt không hỗ trợ Web Audio API, dùng fallback:", err);
+        console.warn("Fallback HTML Audio:", err);
         audio.volume = 0.2;
       }
 
@@ -319,52 +424,37 @@ export default function HistoricalMap() {
     return audioRef.current;
   };
 
-  // Hàm chuyển đổi âm lượng từ từ (Fade Volume)
   const fadeVolume = (targetVolume, duration = 0.8) => {
     if (gainNodeRef.current && audioCtxRef.current) {
       const ctx = audioCtxRef.current;
-      if (ctx.state === 'suspended') {
-        ctx.resume();
-      }
+      if (ctx.state === 'suspended') ctx.resume();
       const currentVal = gainNodeRef.current.gain.value;
       gainNodeRef.current.gain.cancelScheduledValues(ctx.currentTime);
       gainNodeRef.current.gain.setValueAtTime(currentVal, ctx.currentTime);
       gainNodeRef.current.gain.linearRampToValueAtTime(targetVolume, ctx.currentTime + duration);
       return;
     }
-
     if (audioRef.current) {
       audioRef.current.volume = targetVolume;
     }
   };
 
-  // Lắng nghe trạng thái phát video YouTube
   useEffect(() => {
     const handleYouTubeMessage = (event) => {
       try {
         const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
         if (data && data.event === 'onStateChange') {
-          if (data.info === 1) {
-            setIsVideoPlaying(true);
-          } else if (data.info === 2 || data.info === 0) {
-            setIsVideoPlaying(false);
-          }
+          if (data.info === 1) setIsVideoPlaying(true);
+          else if (data.info === 2 || data.info === 0) setIsVideoPlaying(false);
         }
-      } catch {
-        // Bỏ qua tin nhắn không thuộc YouTube
-      }
+      } catch {}
     };
-
     window.addEventListener('message', handleYouTubeMessage);
-    return () => {
-      window.removeEventListener('message', handleYouTubeMessage);
-    };
+    return () => window.removeEventListener('message', handleYouTubeMessage);
   }, []);
 
-  // Tự động hạ âm lượng xuống 0.05 khi mở xem sự kiện hoặc khi video phát, tăng lại 0.2 khi dừng
   useEffect(() => {
     if (!audioRef.current) return;
-
     if (selectedEvent || isVideoPlaying) {
       fadeVolume(0.05, 0.5);
     } else {
@@ -372,31 +462,12 @@ export default function HistoricalMap() {
     }
   }, [selectedEvent, isVideoPlaying]);
 
-  // Giải phóng tài nguyên
-  useEffect(() => {
-    return () => {
-      if (audioCtxRef.current) {
-        audioCtxRef.current.close().catch(() => {});
-      }
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
   const handleEnableAudio = () => {
     const audio = getAudioInstance();
     if (audioCtxRef.current && audioCtxRef.current.state === 'suspended') {
       audioCtxRef.current.resume();
     }
-    audio.play()
-      .then(() => setIsPlayingMusic(true))
-      .catch((err) => console.error("Lỗi phát audio:", err));
-    setShowAudioPrompt(false);
-  };
-
-  const handleDismissAudio = () => {
+    audio.play().then(() => setIsPlayingMusic(true)).catch(console.error);
     setShowAudioPrompt(false);
   };
 
@@ -406,18 +477,16 @@ export default function HistoricalMap() {
       audioCtxRef.current.resume();
     }
     if (audio.paused) {
-      audio.play().catch((err) => console.error("Lỗi khi mở nhạc:", err));
+      audio.play().catch(console.error);
     } else {
       audio.pause();
     }
   };
 
-  const handleCategoryChange = (categoryKey) => {
-    setFilterCategory(categoryKey);
-    if (timelineRef.current) {
-      timelineRef.current.scrollTo({ left: 0, behavior: 'smooth' });
-    }
-    if (selectedEvent && categoryKey !== 'ALL' && selectedEvent.category !== categoryKey) {
+  const handleCategoryChange = (catKey) => {
+    setFilterCategory(catKey);
+    if (timelineRef.current) timelineRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+    if (selectedEvent && catKey !== 'ALL' && selectedEvent.category !== catKey) {
       setIsVideoPlaying(false);
       setSelectedEvent(null);
     }
@@ -438,9 +507,9 @@ export default function HistoricalMap() {
     setSelectedEvent(null);
   };
 
-  const scrollTimeline = (direction) => {
+  const scrollTimeline = (dir) => {
     if (timelineRef.current) {
-      const scrollAmount = direction === 'left' ? -260 : 260;
+      const scrollAmount = dir === 'left' ? -260 : 260;
       timelineRef.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   };
@@ -453,7 +522,7 @@ export default function HistoricalMap() {
           <div className="header-brand">
             <span className="brand-flag">☭</span>
             <div className="brand-titles">
-              <h1>BẢN ĐỒ MỐC SON (1939 - 1945)</h1>
+              <h1>BẢN ĐỒ MỐC SON LỊCH SỬ (1939 - 1945)</h1>
               <p>Cách mạng Tháng Tám toàn thắng</p>
             </div>
           </div>
@@ -462,7 +531,7 @@ export default function HistoricalMap() {
             <button
               className={`music-btn ${isPlayingMusic ? 'playing' : ''}`}
               onClick={toggleMusic}
-              title={isPlayingMusic ? "Tắt nhạc nền" : "Bật nhạc nền"}
+              title={isPlayingMusic ? "Tắt nhạc" : "Bật nhạc"}
             >
               {isPlayingMusic ? '🔊' : '🔇'}
             </button>
@@ -470,7 +539,7 @@ export default function HistoricalMap() {
             <button 
               className="info-nav-btn" 
               onClick={() => setShowInfoModal(true)}
-              title="Xem tác giả & tài liệu"
+              title="Xem nhóm tác giả & tài liệu"
             >
               📖 Tác giả & Tài liệu
             </button>
@@ -490,55 +559,33 @@ export default function HistoricalMap() {
         </div>
       </header>
 
-      {/* 2. BẢN ĐỒ */}
+      {/* 2. MAP VIEW */}
       <div className="map-viewport" ref={mapContainerRef} />
 
-      {/* 3. THANH DÒNG THỜI GIAN ĐÁY */}
+      {/* 3. TIMELINE BAR */}
       <div className={`timeline-wrapper ${selectedEvent ? 'with-sidebar' : ''}`}>
-        <button
-          className="scroll-btn prev desktop-only"
-          onClick={() => scrollTimeline('left')}
-        >
-          ‹
-        </button>
-
-        <div
-          className="quick-timeline-bar"
-          ref={timelineRef}
-        >
+        <button className="scroll-btn prev desktop-only" onClick={() => scrollTimeline('left')}>‹</button>
+        <div className="quick-timeline-bar" ref={timelineRef}>
           {filteredEvents.map((ev) => (
             <button
               key={ev.id}
               className={`timeline-chip ${selectedEvent?.id === ev.id ? 'active' : ''}`}
               onClick={() => handleSelectEvent(ev)}
             >
-              <span className="chip-date">{ev.date}</span>
-              <span className="chip-name">{ev.title.split(':')[0]}</span>
+              <span className="chip-date">{ev.date.split('–')[0].trim()}</span>
+              <span className="chip-name">{ev.title.split('(')[0].split(':')[0]}</span>
             </button>
           ))}
         </div>
-
-        <button
-          className="scroll-btn next desktop-only"
-          onClick={() => scrollTimeline('right')}
-        >
-          ›
-        </button>
+        <button className="scroll-btn next desktop-only" onClick={() => scrollTimeline('right')}>›</button>
       </div>
 
-      {/* 4. SIDEBAR CHI TIẾT SỰ KIỆN */}
+      {/* 4. SIDEBAR CHI TIẾT SỰ KIỆN - THIẾT KẾ CARD TRỰC QUAN */}
       <aside className={`info-sidebar ${selectedEvent ? 'open' : ''}`}>
         {selectedEvent && (
           <div className="sidebar-inner">
             <div className="mobile-sheet-handle" onClick={handleCloseSidebar} />
-
-            <button
-              className="close-sidebar-btn"
-              onClick={handleCloseSidebar}
-              title="Đóng bảng"
-            >
-              ✕
-            </button>
+            <button className="close-sidebar-btn" onClick={handleCloseSidebar} title="Đóng">✕</button>
 
             <div className="sidebar-top">
               <span className="badge-tag">{selectedEvent.category}</span>
@@ -551,7 +598,7 @@ export default function HistoricalMap() {
               “{selectedEvent.highlight}”
             </blockquote>
 
-            {/* VIDEO TƯ LIỆU YOUTUBE */}
+            {/* VIDEO TƯ LIỆU */}
             <div className="video-card">
               <iframe
                 title={selectedEvent.title}
@@ -564,33 +611,66 @@ export default function HistoricalMap() {
               />
             </div>
 
-            {/* TRÍCH DẪN NGUỒN PHÁT HÀNH TƯ LIỆU */}
             <div className="video-source-box">
               <span className="source-icon">📺</span>
               <span className="source-text">
-                Nguồn tư liệu: <strong>{selectedEvent.videoSource}</strong>
+                Nguồn: <strong>{selectedEvent.videoSource}</strong>
               </span>
             </div>
 
+            {/* 1. KHỐI CON SỐ BIẾT NÓI */}
+            <div className="quick-stats-grid">
+              {selectedEvent.stats.map((s, idx) => (
+                <div key={idx} className="stat-box">
+                  <span className="stat-val">{s.val}</span>
+                  <span className="stat-lbl">{s.label}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* 2. KHỐI NHÂN VẬT THEN CHỐT */}
+            <div className="key-figures-box">
+              <span className="figure-label">👤 Nhân vật chủ chốt:</span>
+              {selectedEvent.figures.map((fig, idx) => (
+                <span key={idx} className="figure-tag">{fig}</span>
+              ))}
+            </div>
+
+            {/* 3. DÒNG THỜI GIAN DIỄN BIẾN NHANH */}
             <div className="event-body">
-              <h3>Ý nghĩa & Diễn biến lịch sử:</h3>
-              <p>{selectedEvent.desc}</p>
+              <h3 style={{ fontSize: '13.5px', margin: '14px 0 6px 0', color: '#111' }}>
+                ⚡ Diễn biến sự kiện tóm tắt:
+              </h3>
+              <div className="mini-timeline-list">
+                {selectedEvent.timelineSteps.map((step, idx) => (
+                  <div key={idx} className="mini-step-item">
+                    <span className="step-time-badge">{step.time}</span>
+                    <p className="step-content">{step.text}</p>
+                  </div>
+                ))}
+              </div>
+
+              {/* 4. Ý NGHĨA ĐÚC KẾT */}
+              <div className="significance-card">
+                <h4>Ý NGHĨA LỊCH SỬ</h4>
+                <p>{selectedEvent.significance}</p>
+              </div>
             </div>
 
             <div className="sidebar-footer">
-              <span>Trích: Giáo trình & Văn kiện Lịch sử Đảng</span>
+              <span>Trích: Văn kiện Đảng Toàn tập & Giáo trình Lịch sử Đảng</span>
             </div>
           </div>
         )}
       </aside>
 
-      {/* 5. POPUP TÁC GIẢ & TÀI LIỆU */}
+      {/* 5. MODAL TÁC GIẢ & TÀI LIỆU */}
       {showInfoModal && (
         <div className="modal-backdrop" onClick={() => setShowInfoModal(false)}>
           <div className="modal-container" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <div className="modal-title-group">
-                <span className="modal-icon">🏛️</span>
+                <span className="modal-icon">🏛️️</span>
                 <div>
                   <h3>DỰ ÁN SỐ HÓA LỊCH SỬ ĐẢNG</h3>
                   <p>Môn học: Lịch sử Đảng Cộng sản Việt Nam</p>
@@ -619,9 +699,10 @@ export default function HistoricalMap() {
                 <div className="tab-pane">
                   <div className="project-card">
                     <h4>ĐỀ TÀI: BẢN ĐỒ SỐ ĐỊA BÀN CHIẾN LƯỢC (1939 - 1945)</h4>
-                    <p>Ứng dụng công nghệ bản đồ tương tác số hóa không gian lịch sử thời kỳ tiền khởi nghĩa và Cách mạng Tháng Tám.</p>
+                    <p>Ứng dụng công nghệ bản đồ tương tác số hóa không gian lịch sử thời kỳ tiền khởi nghĩa và Cách mạng Tháng Tám toàn thắng.</p>
                   </div>
-                  <h5 className="section-subtitle">GIÁO VIÊN HƯỚNG DẪN:</h5> 
+                  
+                  <h5 className="section-subtitle">GIẢNG VIÊN HƯỚNG DẪN:</h5> 
                   <div className="author-grid">
                     <div className="author-item">
                       <div className="author-avatar">★</div>
@@ -630,6 +711,7 @@ export default function HistoricalMap() {
                       </div>
                     </div>
                   </div>
+
                   <h5 className="section-subtitle">THÀNH VIÊN NHÓM THỰC HIỆN:</h5>
                   <div className="author-grid">
                     <div className="author-item">
@@ -670,18 +752,18 @@ export default function HistoricalMap() {
                   </div>
 
                   <div className="criteria-box">
-                    <strong>Note:</strong> Đây là sản phẩm môn học Lịch sử Đảng của nhóm 1 lớp LLCT220514 - nhóm 4 - kì I đợt 1 năm học 2026-2027 - Trường Đại học Công nghệ Kỹ thuật TP.HCM.
+                    <strong>Thông tin lớp học:</strong> Nhóm 1 – Lớp LLCT220514 (Nhóm 4) – Học kỳ I, năm học 2026-2027.
                   </div>
                 </div>
               ) : (
                 <div className="tab-pane">
-                  <h5 className="section-subtitle">VĂN KIỆN & GIÁO TRÌNH CHÍNH THỐNG:</h5>
+                  <h5 className="section-subtitle">VĂN KIỆN & TÀI LIỆU LỊCH SỬ CHÍNH THỐNG:</h5>
                   <ul className="doc-list">
                     <li>
                       <strong>1. Giáo trình Lịch sử Đảng Cộng sản Việt Nam</strong>, NXB Chính trị quốc gia Sự thật.
                     </li>
                     <li>
-                      <strong>2. Văn kiện Đảng Toàn tập (Tập 7: 1940 – 1945)</strong>: Nghị quyết Hội nghị TW 6, TW 7 và TW 8.
+                      <strong>2. Văn kiện Đảng Toàn tập (Tập 7: 1940 – 1945)</strong>: Nghị quyết TW 6, TW 7, TW 8.
                     </li>
                     <li>
                       <strong>3. Chỉ thị "Nhật - Pháp bắn nhau và hành động của chúng ta"</strong> (12/03/1945).
@@ -689,13 +771,12 @@ export default function HistoricalMap() {
                     <li>
                       <strong>4. Quân lệnh số 1</strong> (13/08/1945) & Tuyên ngôn Độc lập (02/09/1945).
                     </li>
-                  </ul>
-
-                  <h5 className="section-subtitle" style={{ marginTop: '16px' }}>BÁO CHÍ CÁCH MẠNG & PHIM TƯ LIỆU:</h5>
-                  <ul className="doc-list">
-                    <li>• Báo <em>Cờ Giải phóng</em>, Báo <em>Độc lập</em>, Báo <em>Việt Nam Độc lập</em>.</li>
-                    <li>• Đề cương về Văn hóa Việt Nam (1943).</li>
-                    <li>• Phim tư liệu và hình ảnh lưu trữ: Đài Truyền hình Việt Nam (VTV) & Bảo tàng Lịch sử Quốc gia.</li>
+                    <li>
+                      <strong>5. Đại tướng Võ Nguyên Giáp</strong>: <em>Những năm tháng không thể nào quên</em>, NXB QĐND.
+                    </li>
+                    <li>
+                      <strong>6. Trần Dân Tiên</strong>: <em>Những mẩu chuyện về đời hoạt động của Hồ Chủ tịch</em>.
+                    </li>
                   </ul>
                 </div>
               )}
@@ -704,18 +785,18 @@ export default function HistoricalMap() {
         </div>
       )}
 
-      {/* 6. HỘP THOẠI XIN PHÉP BẬT NHẠC NỀN */}
+      {/* 6. MODAL ÂM THANH */}
       {showAudioPrompt && (
         <div className="audio-prompt-backdrop">
           <div className="audio-prompt-box">
             <div className="audio-prompt-icon">🎺</div>
             <h3>BẠN CÓ MUỐN BẬT NHẠC NỀN?</h3>
-            <p>Trang web sẽ có trải nghiệm trực quan và hào hùng hơn khi đi kèm âm thanh giai điệu cách mạng.</p>
+            <p>Trải nghiệm khám phá bản đồ sẽ sống động và hào hùng hơn khi đi kèm âm thanh giai điệu cách mạng.</p>
             <div className="audio-prompt-actions">
               <button className="prompt-btn-allow" onClick={handleEnableAudio}>
                 🔊 Bật nhạc nền
               </button>
-              <button className="prompt-btn-skip" onClick={handleDismissAudio}>
+              <button className="prompt-btn-skip" onClick={() => setShowAudioPrompt(false)}>
                 🔇 Khám phá không âm thanh
               </button>
             </div>

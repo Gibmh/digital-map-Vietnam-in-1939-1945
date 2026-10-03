@@ -1,3 +1,17 @@
+/* ========================================================
+   0. NHÚNG FONT TIẾNG VIỆT CHUẨN & RESET CƠ BẢN
+   ======================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* Bắt buộc tất cả các phần tử (đặc biệt là button) kế thừa font tiếng Việt chuẩn */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+button, input, select, textarea {
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+}
+
 /* RESET TOÀN TRANG */
 .map-page-layout {
   position: fixed;
@@ -6,8 +20,10 @@
   height: 100vh;           /* Dành cho trình duyệt cũ */
   height: 100dvh;          /* Chuẩn mới: tự co giãn theo thanh Safari của iPhone */
   overflow: hidden !important;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-family: 'Be Vietnam Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   background-color: #1a1a1a;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* ========================================================
@@ -53,10 +69,11 @@
 
 .brand-titles h1 {
   font-size: 0.88rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
   color: #fff;
   white-space: nowrap;
+  letter-spacing: 0.3px;
 }
 
 .brand-titles p {
@@ -200,7 +217,7 @@
   align-items: center;
   justify-content: center;
   font-size: 13px;
-  font-weight: bold;
+  font-weight: 700;
   z-index: 2;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
   transition: transform 0.2s ease;
@@ -258,7 +275,7 @@
   color: #ffd700;
   border: 2px solid #ffd700;
   font-size: 22px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -272,7 +289,7 @@
   background: #d32f2f;
   transform: scale(1.1);
 }
-/* Thẻ trích dẫn kênh tư liệu dưới video */
+
 .video-source-box {
   display: flex;
   align-items: center;
@@ -295,6 +312,7 @@
   color: #8b0000;
   font-weight: 600;
 }
+
 .quick-timeline-bar {
   pointer-events: auto;
   flex: 1;
@@ -337,7 +355,7 @@
 
 .chip-date {
   font-size: 0.72rem;
-  font-weight: bold;
+  font-weight: 700;
   opacity: 0.85;
 }
 
@@ -392,7 +410,7 @@
   border: none;
   border-radius: 50%;
   font-size: 15px;
-  font-weight: bold;
+  font-weight: 700;
   color: #555;
   cursor: pointer;
   display: flex;
@@ -419,7 +437,7 @@
   background: #fbe9e7;
   color: #c62828;
   font-size: 0.72rem;
-  font-weight: bold;
+  font-weight: 700;
   padding: 4px 8px;
   border-radius: 12px;
   text-transform: uppercase;
@@ -433,9 +451,9 @@
 
 .event-heading {
   font-size: 1.25rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #1a1a1a;
-  line-height: 1.3;
+  line-height: 1.35;
   margin: 0 0 12px 0;
 }
 
@@ -447,7 +465,7 @@
   color: #b71c1c;
   font-style: italic;
   font-size: 0.85rem;
-  line-height: 1.45;
+  line-height: 1.5;
 }
 
 .video-card {
@@ -468,19 +486,6 @@
   width: 100%;
   height: 100%;
   border: none;
-}
-
-.event-body h3 {
-  font-size: 0.9rem;
-  color: #333;
-  margin-bottom: 6px;
-}
-
-.event-body p {
-  color: #4f4f4f;
-  font-size: 0.88rem;
-  line-height: 1.6;
-  text-align: justify;
 }
 
 .sidebar-footer {
@@ -541,7 +546,7 @@
 
 .modal-title-group h3 {
   font-size: 0.92rem;
-  font-weight: 800;
+  font-weight: 700;
   margin: 0;
 }
 
@@ -609,6 +614,7 @@
   margin: 0 0 4px 0;
   color: #8b0000;
   font-size: 0.9rem;
+  font-weight: 700;
 }
 
 .project-card p {
@@ -619,7 +625,7 @@
 
 .section-subtitle {
   font-size: 0.78rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #7f8c8d;
   margin: 0 0 10px 0;
   text-transform: uppercase;
@@ -651,7 +657,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 14px;
   flex-shrink: 0;
 }
@@ -665,11 +671,6 @@
   font-weight: 700;
   color: #222;
   font-size: 0.85rem;
-}
-
-.author-meta .desc {
-  font-size: 0.78rem;
-  color: #555;
 }
 
 .author-meta .sub {
@@ -704,7 +705,7 @@
 }
 
 /* ========================================================
-   6. HỘP THOẠI XIN PHÉP BẬT NHẠC NỀN
+   6. HỘP THOẠI XIN PHÉP BẬT NHẠC NỀN (ĐÃ SỬA TRIỆT ĐỂ LỖI FONT)
    ======================================================== */
 .audio-prompt-backdrop {
   position: fixed;
@@ -739,9 +740,9 @@
 .audio-prompt-box h3 {
   margin: 0 0 8px 0;
   font-size: 1.1rem;
-  font-weight: 800;
+  font-weight: 700;
   color: #8b0000;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.3px;
 }
 
 .audio-prompt-box p {
@@ -757,32 +758,39 @@
   gap: 10px;
 }
 
+/* Nút Bật nhạc nền - đã tối ưu font, weight và căn giữa đẹp mắt */
 .prompt-btn-allow {
-  background: linear-gradient(135deg, #d32f2f, #a71d2a);
-  color: #ffd700;
+  background: linear-gradient(135deg, #c8102e, #9e0c1b);
+  color: #fffb00;
   border: 1.5px solid #ffd700;
-  padding: 12px;
+  padding: 12px 20px;
   border-radius: 25px;
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-size: 0.95rem;
+  font-weight: 700;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(211, 47, 47, 0.4);
+  box-shadow: 0 4px 12px rgba(200, 16, 46, 0.4);
   transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.3px;
 }
 
 .prompt-btn-allow:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(211, 47, 47, 0.6);
-  background: #b71c1c;
+  box-shadow: 0 6px 16px rgba(200, 16, 46, 0.6);
+  background: linear-gradient(135deg, #d32f2f, #b71c1c);
 }
 
 .prompt-btn-skip {
   background: transparent;
-  color: #777;
+  color: #666;
   border: 1px solid #ddd;
   padding: 10px;
   border-radius: 25px;
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s ease;
@@ -835,14 +843,14 @@
 
   .music-btn {
     position: fixed;
-    top: 96px;                           /* Nằm ngay dưới thanh danh mục lọc */
-    right: 12px;                         /* Căn sát mép phải bản đồ */
-    z-index: 1250;                       /* Nổi trên bản đồ để xem video vẫn bấm tắt được */
+    top: 96px;
+    right: 12px;
+    z-index: 1250;
     width: 38px;
     height: 38px;
     font-size: 17px;
-    background: rgba(167, 29, 42, 0.95); /* Nền đỏ đô sang trọng */
-    border: 2px solid #ffd700;          /* Viền vàng đồng sắc nét */
+    background: rgba(167, 29, 42, 0.95);
+    border: 2px solid #ffd700;
     box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
   }
 
@@ -917,53 +925,181 @@
     font-size: 1.1rem;
   }
 
-  .event-body p {
-    font-size: 0.84rem;
-  }
-
   .modal-container {
     width: 100%;
     max-height: 90vh;
   }
 }
-/* Nhãn hiển thị chủ quyền biển đảo rõ nét ở mọi mức zoom */
+
+/* ========================================================
+   8. NHÃN HIỂN THỊ CHỦ QUYỀN BIỂN ĐẢO VIỆT NAM
+   ======================================================== */
 .custom-island-badge {
   background: transparent !important;
   border: none !important;
 }
 
 .island-tag-box {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(186, 12, 47, 0.92); /* Nền đỏ cờ trang trọng */
-  border: 1.5px solid #ffd700;        /* Viền vàng đồng */
-  padding: 3px 8px;
+  gap: 8px;
+  width: max-content;           /* Tự động dãn khung vừa khít độ dài chữ */
+  min-width: max-content;
+  background: rgba(186, 12, 47, 0.95);
+  border: 1.5px solid #ffd700;
+  padding: 5px 12px;             /* Cân chỉnh khoảng cách trong ô thoáng đãng */
   border-radius: 6px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
   pointer-events: none;
   white-space: nowrap;
+  box-sizing: border-box;
 }
 
 .island-tag-box .flag {
-  font-size: 15px;
+  font-size: 16px;
+  line-height: 1;
+  flex-shrink: 0;                /* Không làm bẹp biểu tượng lá cờ */
 }
 
 .island-tag-box .tag-text {
   display: flex;
   flex-direction: column;
-  line-height: 1.15;
+  line-height: 1.2;
 }
 
 .island-tag-box strong {
   color: #ffd700;
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
   letter-spacing: 0.5px;
 }
 
 .island-tag-box small {
   color: #ffffff;
-  font-size: 9px;
-  font-weight: 400;
+  font-size: 9.5px;
+  font-weight: 500;
+  opacity: 0.95;
+}
+/* ========================================================
+   9. THẺ TƯƠNG TÁC MỚI TRONG SIDEBAR
+   ======================================================== */
+.quick-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.stat-box {
+  background: rgba(218, 41, 28, 0.06);
+  border: 1px solid rgba(218, 41, 28, 0.2);
+  border-radius: 8px;
+  padding: 8px 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-val {
+  font-size: 15px;
+  font-weight: 700;
+  color: #b31217;
+}
+
+.stat-lbl {
+  font-size: 11px;
+  color: #666;
+  margin-top: 2px;
+}
+
+.key-figures-box {
+  margin: 12px 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.figure-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #444;
+  margin-right: 4px;
+}
+
+.figure-tag {
+  background: #f1f3f5;
+  color: #2b2b2b;
+  font-size: 11.5px;
+  padding: 3px 8px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.mini-timeline-list {
+  position: relative;
+  margin: 14px 0 16px 8px;
+  padding-left: 14px;
+  border-left: 2px dashed #dc2626;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mini-step-item {
+  position: relative;
+}
+
+.mini-step-item::before {
+  content: '';
+  position: absolute;
+  left: -19px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  background: #dc2626;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 2px #dc2626;
+}
+
+.step-time-badge {
+  font-size: 11px;
+  font-weight: 700;
+  color: #b91c1c;
+  background: #fee2e2;
+  padding: 2px 6px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 4px;
+}
+
+.step-content {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #333;
+  margin: 0;
+}
+
+.significance-card {
+  background: #fffbeb;
+  border-left: 4px solid #f59e0b;
+  border-radius: 0 8px 8px 0;
+  padding: 10px 14px;
+  margin: 12px 0;
+}
+
+.significance-card h4 {
+  margin: 0 0 4px 0;
+  font-size: 12.5px;
+  font-weight: 700;
+  color: #b45309;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.significance-card p {
+  margin: 0;
+  font-size: 12.5px;
+  color: #78350f;
+  line-height: 1.4;
 }
