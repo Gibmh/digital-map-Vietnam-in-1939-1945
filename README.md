@@ -69,10 +69,10 @@
 
 ```bash
 # Clone kho mã nguồn về máy tính
-git clone [https://github.com/](https://github.com/)<tai-khoan-cua-ban>/<ten-repository>.git
+git clone https://github.com/Gibmh/digital-map-Vietnam-in-1939-1945.git
 
 # Di chuyển vào thư mục dự án
-cd <ten-repository>
+cd digital-map-Vietnam-in-1939-1945
 
 # Cài đặt các thư viện phụ thuộc
 npm install
