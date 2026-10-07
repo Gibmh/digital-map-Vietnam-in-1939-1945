@@ -1,4 +1,4 @@
-# 🇻🇳 BẢN ĐỒ SỐ ĐỊA BÀN CHIẾN LƯỢC (1939 – 1945)
+#VIỆT NAM - BẢN ĐỒ SỐ ĐỊA BÀN CHIẾN LƯỢC (1939 – 1945)
 > **Dự án số hóa dữ liệu lịch sử phục vụ học tập và nghiên cứu môn học: Lịch sử Đảng Cộng sản Việt Nam.**  
 > *Chủ đề: Phong trào giải phóng dân tộc và Tổng khởi nghĩa Cách mạng Tháng Tám (1939 – 1945).*
 
