@@ -46,7 +46,7 @@
 8. **19/08/1945:** Khởi nghĩa giành chính quyền tại Hà Nội.
 9. **23/08/1945:** Khởi nghĩa giành chính quyền tại Huế (chấm dứt chế độ phong kiến).
 10. **25/08/1945:** Khởi nghĩa giành chính quyền tại Sài Gòn.
-11. **02/09/1945:** Quảng trường Ba Đình: Tuyên ngôn Độc lập khai sinh nước VNDCCH.
+11. **02/09/1945:** Quảng trường Ba Đình: Tuyên ngôn Độc lập khai sinh nước Việt Nam dân chủ Cộng Hòa.
 
 ---
 
