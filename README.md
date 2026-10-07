@@ -24,7 +24,6 @@
 ## 🚀 Tính Năng Nổi Bật
 
 - **Bản đồ số tương tác mượt mà:** Định vị tọa độ chính xác các chiến khu, căn cứ địa, điểm nổ ra khởi nghĩa vũ trang trên nền bản đồ độ phân giải cao.
-- **Khẳng định vững chắc chủ quyền biển đảo:** Tích hợp trực tiếp lớp nhãn phủ chủ quyền (`L.divIcon`) cho **Quần đảo Hoàng Sa (TP. Đà Nẵng)** và **Quần đảo Trường Sa (T. Khánh Hòa)** độc lập với máy chủ bản đồ nền quốc tế, hiển thị rõ nét tại mọi mức thu phóng (zoom).
 - **Tư liệu lịch sử & Video chính thống:** Kết hợp trích dẫn văn kiện, phân tích diễn biến và tích hợp các phim tài liệu được phát hành bởi các cơ quan báo chí, truyền hình nhà nước (*Đài Truyền hình Việt Nam - VTV, Báo Nhân Dân, Đài PT-TH Lạng Sơn*).
 - **Hệ thống âm thanh thích ứng (Adaptive Audio Engine):**
   - Vận hành nhạc nền hành khúc cách mạng hào hùng.
