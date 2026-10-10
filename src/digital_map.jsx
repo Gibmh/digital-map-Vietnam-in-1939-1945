@@ -8,234 +8,234 @@ import themeSong from './themesong.mp3';
 const historicalEvents = [
   {
     id: 'bac-son',
-    title: 'Khởi nghĩa Bắc Sơn (Lạng Sơn)',
+    title: 'Khởi nghĩa Bắc Sơn & Sự chuyển hướng chỉ đạo của Đảng',
     date: '27/09/1940',
-    category: 'Khởi nghĩa vũ trang',
+    category: 'Chủ trương & Khởi nghĩa vũ trang',
     coords: [21.9038, 106.3262],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/nkuDKjhNTy0',
     videoSource: 'Đài Phát thanh & Truyền hình Lạng Sơn',
-    highlight: 'Ra đời Đội du kích Bắc Sơn – mầm mống đầu tiên của lực lượng vũ trang cách mạng.',
+    highlight: 'Sự nhạy bén của Xứ ủy Bắc Kỳ trong việc kịp thời phối hợp, bước đầu chuyển hướng từ đấu tranh chính trị sang khởi nghĩa tự vệ.',
     stats: [
-      { label: 'Nghĩa quân tham gia', val: '~600 người' },
-      { label: 'Đội du kích ban đầu', val: '20 chiến sĩ' }
+      { label: 'Cơ quan chỉ đạo', val: 'Xứ ủy Bắc Kỳ' },
+      { label: 'Lực lượng nòng cốt', val: 'Đội du kích Bắc Sơn (20 chiến sĩ)' }
     ],
     figures: ['Hoàng Văn Hán', 'Chu Văn Tấn', 'Trần Đăng Ninh'],
     timelineSteps: [
-      { time: '27/09/1940', text: 'Nhân lúc tàn quân Pháp thua chạy trước phát xít Nhật, nhân dân tước vũ khí địch và đánh chiếm đồn Mỏ Nhài.' },
-      { time: '16/10/1940', text: 'Xứ ủy Bắc Kỳ cử Trần Đăng Ninh về phối hợp Chu Văn Tấn thành lập Đội du kích Bắc Sơn.' },
-      { time: '28/10/1940', text: 'Pháp - Nhật thỏa hiệp đàn áp; nghĩa quân rút vào căn cứ Võ Nhai bảo toàn lực lượng.' }
+      { time: '27/09/1940', text: 'Nhân dân dưới sự lãnh đạo của chi bộ Đảng chớp thời cơ Pháp - Nhật giao tranh, tước vũ khí địch, đánh chiếm đồn Mỏ Nhài.' },
+      { time: '16/10/1940', text: 'Xứ ủy Bắc Kỳ kịp thời cử cán bộ (Trần Đăng Ninh) lên phối hợp với Chu Văn Tấn, quyết định thành lập Đội du kích Bắc Sơn.' },
+      { time: '28/10/1940', text: 'Đảng rút ra bài học thực tiễn về việc bảo toàn lực lượng khi so sánh lực lượng chưa có lợi cho cách mạng.' }
     ],
-    significance: 'Đánh dấu bước chuyển quan trọng từ đấu tranh chính trị sang khởi nghĩa vũ trang tự vệ, tiền thân của Cứu quốc quân.'
+    significance: 'Đánh dấu bước chuyển hướng chỉ đạo quan trọng của Đảng: bước đầu kết hợp đấu tranh chính trị với vũ trang tự vệ, đặt nền móng cho việc xây dựng lực lượng vũ trang tập trung.'
   },
   {
     id: 'nam-ky',
-    title: 'Khởi nghĩa Nam Kỳ',
+    title: 'Khởi nghĩa Nam Kỳ & Bài học kinh nghiệm về đánh giá thời cơ',
     date: '23/11/1940',
-    category: 'Khởi nghĩa vũ trang',
+    category: 'Đường lối & Phong trào cách mạng',
     coords: [10.8856, 106.5946],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/cbdFNXkPiLk',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    highlight: 'Lần đầu tiên lá cờ đỏ sao vàng xuất hiện trong phong trào đấu tranh cách mạng.',
+    highlight: 'Để lại bài học xương máu quý báu cho Đảng về nghệ thuật đánh giá thời cơ, chuẩn bị lực lượng và sự thống nhất ý chí trong tổ chức.',
     stats: [
-      { label: 'Quy mô nổi dậy', val: '18 tỉnh thành' },
-      { label: 'Giữ chính quyền (Mỹ Tho)', val: '49 ngày (54/56 xã)' }
+      { label: 'Quy mô nổi dậy', val: '18/21 tỉnh Nam Bộ' },
+      { label: 'Bài học rút ra', val: 'Thời cơ và sự chuẩn bị lực lượng' }
     ],
     figures: ['Phan Đăng Lưu', 'Tạ Uyên', 'Nguyễn Thị Minh Khai', 'Nguyễn Thị Bảy'],
     timelineSteps: [
-      { time: '20 - 22/11/1940', text: 'Lệnh khởi nghĩa đã phát đi dù Trung ương khuyên tạm hoãn; nhiều cán bộ chủ chốt bị bắt trước giờ G.' },
-      { time: 'Đêm 22 - 23/11/1940', text: 'Đồng loạt bùng nổ từ Biên Hòa đến Cà Mau; phá đồn bót, xử lý phản động, cờ đỏ sao vàng tung bay.' },
-      { time: '12/1940', text: 'Thực dân Pháp dội bom đàn áp tàn khốc; nghĩa quân rút về lập căn cứ tại U Minh và Đồng Tháp Mười.' }
+      { time: '11/1940', text: 'Xứ ủy Nam Kỳ quyết định phát động khởi nghĩa dù Trung ương Đảng đã nhận định điều kiện chưa chín muồi và xin tạm hoãn.' },
+      { time: 'Đêm 22 - 23/11/1940', text: 'Cuộc nổi dậy diễn ra quy mô lớn tại 18 tỉnh Nam Bộ, thể hiện tinh thần kiên trung tuyệt đối của quần chúng với Đảng.' },
+      { time: '12/1940', text: 'Đảng tổng kết bài học kinh nghiệm sâu sắc về chỉ đạo chiến lược, sự thống nhất tuyệt đối từ Trung ương đến địa phương.' }
     ],
-    significance: 'Cuộc diễn tập vũ trang quy mô nhất Nam Bộ; đúc kết bài học xương máu về chớp thời cơ và xây dựng lực lượng.'
+    significance: 'Cung cấp cho Đảng bài học kinh nghiệm xương máu về chỉ đạo khởi nghĩa: phải đúng thời điểm, khi lực lượng đã được chuẩn bị đầy đủ và thời cơ cách mạng đã chín muồi.'
   },
   {
     id: 'do-luong',
-    title: 'Binh biến Đô Lương (Nghệ An)',
+    title: 'Binh biến Đô Lương & Công tác vận động binh lính của Đảng',
     date: '13/01/1941',
-    category: 'Khởi nghĩa vũ trang',
+    category: 'Công tác binh vận của Đảng',
     coords: [18.9167, 105.3000],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/tWLqY8ZT2NA',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    highlight: 'Phát súng báo hiệu tinh thần binh lính người Việt giác ngộ theo tiếng gọi non sông.',
+    highlight: 'Minh chứng sinh động cho hiệu quả của công tác vận động binh lính (binh vận) – một mặt trận quan trọng trong chiến lược của Đảng.',
     stats: [
-      { label: 'Địa bàn xuất phát', val: 'Đồn Chợ Rạng' },
-      { label: 'Chiến sĩ kiên trung', val: '11 đồng chí hy sinh' }
+      { label: 'Mặt trận công tác', val: 'Công tác Binh vận' },
+      { label: 'Lãnh đạo chủ chốt', val: 'Đội Cung (Nguyễn Văn Cung)' }
     ],
     figures: ['Đội Cung (Nguyễn Văn Cung)'],
     timelineSteps: [
-      { time: 'Tối 13/01/1941', text: 'Binh lính đồn Chợ Rạng bất bình vì bị bắt sang Lào làm bia đỡ đạn, đã nổi dậy đánh chiếm đồn Đô Lương.' },
-      { time: 'Đêm 13/01/1941', text: 'Đoàn quân lên ôtô hành quân thần tốc về thành Vinh định phối hợp đánh chiếm cứ điểm nhưng kế hoạch bại lộ.' },
-      { time: '24/04/1941', text: 'Đội Cung cùng 10 chiến sĩ kiên cường hy sinh trước họng súng quân thù tại pháp trường Vinh.' }
+      { time: '13/01/1941', text: 'Dưới ảnh hưởng của tổ chức Đảng, binh lính người Việt tại đồn Chợ Rạng nổi dậy chống lệnh điều đi làm bia đỡ đạn.' },
+      { time: 'Đêm 13/01/1941', text: 'Cuộc binh biến đánh chiếm Đô Lương và hành quân về Vinh nhưng do chưa kết nối được với phong trào chung nên bị cô lập.' },
+      { time: '24/04/1941', text: 'Các chiến sĩ binh biến kiên cường hy sinh, khẳng định tinh thần bất khuất trước kẻ thù.' }
     ],
-    significance: 'Khẳng định tinh thần yêu nước bất khuất và khả năng giác ngộ cách mạng của binh lính người Việt trong quân đội Pháp.'
+    significance: 'Khẳng định tầm quan trọng của công tác binh vận trong đường lối cách mạng của Đảng, góp phần phân hóa và làm suy yếu hàng ngũ địch.'
   },
   {
     id: 'pac-bo',
-    title: 'Pác Bó: Bác Hồ Về Nước & Hội Nghị TW 8',
+    title: 'Hội nghị Trung ương 8 (05/1941): Hoàn chỉnh chuyển hướng chiến lược',
     date: '28/01/1941 – 19/05/1941',
-    category: 'Chủ trương chiến lược',
+    category: 'Chủ trương & Đường lối chiến lược',
     coords: [22.9818, 106.0506],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/WKcXjaqJY04',
     videoSource: 'Đài Truyền hình Việt Nam (VTV3)',
-    highlight: 'Quyết định lịch sử: Quyền lợi bộ phận, giai cấp phải đặt dưới quyền lợi sinh tử của toàn dân tộc.',
+    highlight: 'Đỉnh cao tư duy lý luận của Chủ tịch Hồ Chí Minh: Đặt nhiệm vụ giải phóng dân tộc lên hàng đầu, giải quyết đúng đắn vấn đề dân tộc và giai cấp.',
     stats: [
-      { label: 'Hành trình bôn ba', val: '30 năm trở về' },
-      { label: 'Hội nghị Trung ương', val: 'Khóa I (lần 8)' }
+      { label: 'Văn kiện chủ đạo', val: 'Nghị quyết Hội nghị TW 8 (Khóa I)' },
+      { label: 'Tổ chức mặt trận', val: 'Mặt trận Việt Minh (19/05/1941)' }
     ],
-    figures: ['Lãnh tụ Nguyễn Ái Quốc (Chủ trì)'],
+    figures: ['Lãnh tụ Hồ Chí Minh (Chủ trì)'],
     timelineSteps: [
-      { time: '28/01/1941', text: 'Lãnh tụ Nguyễn Ái Quốc vượt mốc 108 biên giới về lán Khuổi Nặm (Pác Bó, Cao Bằng) trực tiếp lãnh đạo.' },
-      { time: '10 – 19/05/1941', text: 'Chủ trì Hội nghị Trung ương 8, chuyển hướng chỉ đạo chiến lược: đặt nhiệm vụ giải phóng dân tộc lên hàng đầu.' },
-      { time: '19/05/1941', text: 'Thành lập Mặt trận Việt Minh nhằm tập hợp rộng rãi mọi tầng lớp nhân dân yêu nước.' }
+      { time: '28/01/1941', text: 'Lãnh tụ Nguyễn Ái Quốc về nước, trực tiếp lãnh đạo phong trào cách mạng Việt Nam sau 30 năm bôn ba.' },
+      { time: '10 – 19/05/1941', text: 'Chủ trì Hội nghị Trung ương 8 tại Pác Bó (Cao Bằng), quyết định tạm gác khẩu hiệu cách mạng ruộng đất, đặt nhiệm vụ giải phóng dân tộc lên trên hết.' },
+      { time: '19/05/1941', text: 'Sáng lập Mặt trận Việt Minh nhằm đoàn kết rộng rãi mọi tầng lớp nhân dân không phân biệt tôn giáo, giai cấp.' }
     ],
-    significance: 'Hoàn chỉnh đường lối giương cao ngọn cờ dân tộc, tạo kim chỉ nam dẫn đến thắng lợi Cách mạng Tháng Tám.'
+    significance: 'Hoàn chỉnh sự chuyển hướng chiến lược được vạch ra từ Hội nghị TW 6 (1939), là văn kiện kim chỉ nam quyết định thắng lợi của Cách mạng Tháng Tám 1945.'
   },
   {
     id: 'tran-hung-dao',
-    title: 'Thành lập Đội VN Tuyên truyền Giải phóng quân',
+    title: 'Thành lập Đội VNTTGPQ: Tư tưởng quân sự của Đảng',
     date: '22/12/1944',
-    category: 'Cao trào kháng Nhật',
+    category: 'Xây dựng lực lượng vũ trang',
     coords: [22.6105, 105.8972],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/T591PKbi3Jc',
     videoSource: 'QPVN - Truyền Hình Quốc Phòng Việt Nam',
-    highlight: 'Đội quân đàn anh – tiền thân vẻ vang của Quân đội nhân dân Việt Nam anh hùng.',
+    highlight: 'Thực hiện chỉ thị của Hồ Chí Minh: “Chính trị trọng hơn quân sự”, đặt cơ sở cho việc xây dựng lực lượng vũ trang chính quy.',
     stats: [
-      { label: 'Quân số ban đầu', val: '34 chiến sĩ' },
-      { label: 'Chiến thắng mở màn', val: 'Phai Khắt & Nà Ngần' }
+      { label: 'Chỉ thị lãnh đạo', val: 'Chỉ thị thành lập Đội VNTTGPQ' },
+      { label: 'Nguyên tắc tổ chức', val: 'Đảng lãnh đạo tuyệt đối' }
     ],
-    figures: ['Võ Nguyên Giáp (Chỉ huy)', 'Hoàng Sâm (Đội trưởng)'],
+    figures: ['Hồ Chí Minh', 'Võ Nguyên Giáp (Chỉ huy)', 'Hoàng Sâm (Đội trưởng)'],
     timelineSteps: [
-      { time: '12/1944', text: 'Bác Hồ gửi chỉ thị đựng trong bao thuốc lá: "Chính trị trọng hơn quân sự, tập trung lực lượng lập đội chủ lực".' },
-      { time: '22/12/1944', text: 'Lễ thành lập cử hành tại khu rừng Trần Hưng Đạo (Nguyên Bình, Cao Bằng) với 34 chiến sĩ.' },
-      { time: '25 – 26/12/1944', text: 'Đánh úp tiêu diệt gọn đồn Phai Khắt và Nà Ngần theo chiến thuật "lai vô ảnh, khứ vô tung".' }
+      { time: '12/1944', text: 'Bác Hồ ra chỉ thị nhấn mạnh nguyên tắc chính trị trọng hơn quân sự, tuyên truyền trọng hơn tác chiến.' },
+      { time: '22/12/1944', text: 'Thành lập Đội Việt Nam Tuyên truyền Giải phóng quân tại rừng Trần Hưng Đạo (Cao Bằng).' },
+      { time: '25 – 26/12/1944', text: 'Giành thắng lợi vang dội tại Phai Khắt và Nà Ngần, khẳng định nghệ thuật quân sự tài tình của lực lượng chủ lực đầu tiên.' }
     ],
-    significance: 'Đánh dấu sự ra đời của lực lượng vũ trang tập trung, kết hợp nhuần nhuyễn đấu tranh chính trị với quân sự.'
+    significance: 'Thể hiện bước phát triển mới trong tư tưởng quân sự của Đảng: kết hợp chặt chẽ giữa đấu tranh chính trị và đấu tranh vũ trang, xây dựng lực lượng vũ trang 3 thứ quân.'
   },
   {
     id: 'hiep-hoa',
-    title: 'Hội nghị Quân sự cách mạng Bắc Kỳ',
+    title: 'Hội nghị Quân sự cách mạng Bắc Kỳ (04/1945)',
     date: '15/04/1945 – 20/04/1945',
-    category: 'Cao trào kháng Nhật',
+    category: 'Chủ trương & Quân sự',
     coords: [21.3444, 105.9861],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/g0ib84B6s0A',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    highlight: 'Hợp nhất toàn bộ lực lượng vũ trang, chuẩn bị trực tiếp chớp thời cơ Tổng khởi nghĩa.',
+    highlight: 'Quyết định tầm nhìn chiến lược: Thống nhất lực lượng vũ trang toàn quốc, chuẩn bị trực tiếp cho Tổng khởi nghĩa.',
     stats: [
-      { label: 'Chiến khu cả nước', val: 'Quy hoạch 7 chiến khu' },
-      { label: 'Quân đội thống nhất', val: '13 đại đội chủ lực' }
+      { label: 'Cơ quan triệu tập', val: 'Ban Thường vụ Trung ương Đảng' },
+      { label: 'Quyết định lớn', val: 'Thống nhất Việt Nam Giải phóng quân' }
     ],
-    figures: ['Trường Chinh (Chủ trì)', 'Võ Nguyên Giáp', 'Trần Đăng Ninh', 'Chu Văn Tấn'],
+    figures: ['Trường Chinh (Chủ trì)', 'Võ Nguyên Giáp', 'Trần Đăng Ninh'],
     timelineSteps: [
-      { time: '15/04/1945', text: 'Ban Thường vụ Trung ương Đảng họp tại Hiệp Hòa (Bắc Giang), xác định nhiệm vụ quân sự lên trên hết.' },
-      { time: 'Kế hoạch tác chiến', text: 'Đẩy mạnh chiến tranh du kích, phá kho thóc Nhật cứu đói, xây dựng căn cứ địa kháng Nhật.' },
-      { time: '15/05/1945', text: 'Thống nhất Việt Nam Tuyên truyền Giải phóng quân và Cứu quốc quân thành Việt Nam Giải phóng quân tại Thái Nguyên.' }
+      { time: '15/04/1945', text: 'Ban Thường vụ Trung ương Đảng họp tại Hiệp Hòa (Bắc Giang), nhận định thời cơ khởi nghĩa đang đến gần.' },
+      { time: '15/05/1945', text: 'Hợp nhất Việt Nam Tuyên truyền Giải phóng quân và Cứu quốc quân thành Việt Nam Giải phóng quân.' },
+      { time: 'Tháng 5/1945', text: 'Thiết lập 7 chiến khu lớn làm căn cứ địa vững chắc cho cách mạng.' }
     ],
-    significance: 'Bước phát triển lý luận quân sự nhảy vọt, hợp nhất thống nhất lực lượng vũ trang trên toàn quốc.'
+    significance: 'Đánh dấu bước nhảy vọt trong công tác chuẩn bị về quân sự của Đảng, đáp ứng yêu cầu cấp bách của tình thế cách mạng trước khi Nhật đầu hàng Đồng minh.'
   },
   {
     id: 'tan-trao',
-    title: 'Tân Trào: Quân Lệnh Số 1 & Quốc Dân Đại Hội',
+    title: 'Quốc dân Đại hội Tân Trào & Quân lệnh số 1',
     date: '13/08/1945 – 16/08/1945',
-    category: 'Tổng khởi nghĩa',
+    category: 'Nghệ thuật lãnh đạo Tổng khởi nghĩa',
     coords: [21.7589, 105.3789],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/32tXt4Tfsm0',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    highlight: '“Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập!”',
+    highlight: 'Sự quyết đoán tối cao của Trung ương Đảng và Chủ tịch Hồ Chí Minh: Chớp thời cơ ngàn năm có một để phát động Tổng khởi nghĩa.',
     stats: [
-      { label: 'Đại biểu triệu tập', val: '>60 đại biểu toàn quốc' },
-      { label: 'Chương trình hành động', val: '10 chính sách Việt Minh' }
+      { label: 'Văn kiện ban bố', val: 'Quân lệnh số 1 (Ủy ban Khởi nghĩa)' },
+      { label: 'Cơ quan lâm thời', val: 'Ủy ban Dân tộc Giải phóng' }
     ],
-    figures: ['Hồ Chí Minh', 'Trường Chinh', 'Vũ Oanh'],
+    figures: ['Hồ Chí Minh', 'Trường Chinh'],
     timelineSteps: [
-      { time: '23h ngày 13/08', text: 'Ủy ban Khởi nghĩa toàn quốc ban bố Quân lệnh số 1 – chính thức phát động Tổng khởi nghĩa cả nước.' },
-      { time: '16/08/1945', text: 'Khai mạc Quốc dân Đại hội tại đình Tân Trào, thông qua lệnh khởi nghĩa và 10 chính sách lớn.' },
-      { time: 'Bầu Chính phủ', text: 'Bầu Ủy ban Dân tộc Giải phóng Việt Nam do Chủ tịch Hồ Chí Minh đứng đầu.' }
+      { time: '23h ngày 13/08/1945', text: 'Ngay khi nhận tin Nhật sắp đầu hàng, Đảng và Tổng bộ Việt Minh lập tức ban bố Quân lệnh số 1.' },
+      { time: '16/08/1945', text: 'Đại hội Quốc dân Tân Trào thông qua 10 chính sách lớn của Việt Minh và bầu Chính phủ lâm thời.' },
+      { time: 'Tháng 8/1945', text: 'Hồ Chí Minh ra lời kêu gọi Tổng khởi nghĩa: "Dù phải đốt cháy cả dãy Trường Sơn cũng phải kiên quyết giành cho được độc lập".' }
     ],
-    significance: 'Đóng vai trò như một Quốc hội lâm thời, biểu thị ý chí sắt đá của toàn dân tộc vùng lên giành độc lập.'
+    significance: 'Thể hiện năng lực lãnh đạo xuất sắc, tầm nhìn chiến lược sắc bén và sự nhạy bén đặc biệt của Đảng trong việc đón đầu thời cơ.'
   },
   {
     id: 'ha-noi',
-    title: 'Hà Nội Khởi Nghĩa Giành Chính Quyền',
+    title: 'Đảng bộ Hà Nội lãnh đạo khởi nghĩa giành chính quyền',
     date: '19/08/1945',
-    category: 'Tổng khởi nghĩa',
+    category: 'Nghệ thuật chớp thời cơ',
     coords: [21.0245, 105.8575],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/fCqgLY4QqeE',
     videoSource: 'Trung tâm Tin tức VTV24 (Đài THVN)',
-    highlight: 'Thắng lợi ở Thủ đô tạo hiệu ứng dây chuyền cổ vũ mãnh liệt phong trào cả nước.',
+    highlight: 'Mẫu mực về sự lãnh đạo linh hoạt, sáng tạo của Đảng bộ địa phương trong việc biến mít tinh của địch thành cuộc khởi nghĩa.',
     stats: [
-      { label: 'Quân Nhật đóng giữ', val: '>10.000 lính (án binh)' },
-      { label: 'Thời gian thắng lợi', val: 'Trọn vẹn trong 1 ngày' }
+      { label: 'Đảng bộ lãnh đạo', val: 'Thành ủy Hà Nội' },
+      { label: 'Đặc điểm thắng lợi', val: 'Nhanh chóng, triệt để, ít đổ máu' }
     ],
     figures: ['Nguyễn Khang', 'Trần Tử Bình', 'Nguyễn Quyết'],
     timelineSteps: [
-      { time: '17/08/1945', text: 'Biến cuộc mít tinh thân Nhật của Tổng hội Viên chức thành cuộc biểu tình tuần hành rầm rộ ủng hộ Việt Minh.' },
-      { time: 'Sáng 19/08/1945', text: 'Hàng chục vạn quần chúng kéo về Quảng trường Nhà hát Lớn mít tinh, sau đó tỏa đi chiếm các cơ quan đầu não.' },
-      { time: 'Chiều 19/08/1945', text: 'Đánh chiếm Phủ Khâm sai, Tòa Thị chính, Trại Bảo an binh; chính quyền tay sai sụp đổ hoàn toàn.' }
+      { time: '17/08/1945', text: 'Đảng bộ Hà Nội khôn khéo lái cuộc mít tinh của Tổng hội Viên chức thân Nhật thành cuộc tuần hành biểu dương lực lượng.' },
+      { time: 'Sáng 19/08/1945', text: 'Hàng chục vạn quần chúng dưới sự lãnh đạo của mặt trận Việt Minh tỏa đi chiếm các cơ quan đầu não của địch.' },
+      { time: 'Chiều 19/08/1945', text: 'Khởi nghĩa tại Thủ đô thắng lợi hoàn toàn, tạo tiếng vang và hiệu ứng dây chuyền cho cả nước.' }
     ],
-    significance: 'Mẫu mực về nghệ thuật chớp thời cơ, kết hợp áp đảo chính trị với xung kích vũ trang để giành thắng lợi không đổ máu.'
+    significance: 'Minh chứng rõ nét cho phương thức lãnh đạo linh hoạt, chủ động, sáng tạo của các cấp ủy đảng và nghệ thuật kết hợp lực lượng chính trị với vũ trang.'
   },
   {
     id: 'hue',
-    title: 'Khởi Nghĩa Giành Chính Quyền Tại Huế',
+    title: 'Khởi nghĩa tại Huế & Xóa bỏ chế độ phong kiến',
     date: '23/08/1945',
-    category: 'Tổng khởi nghĩa',
+    category: 'Thắng lợi Tổng khởi nghĩa',
     coords: [16.4637, 107.5909],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/m5u5Rc-QxX4',
     videoSource: 'VNAMEDIA - Trung tâm nội dung số',
-    highlight: '“Thà làm dân một nước độc lập còn hơn làm vua một nước nô lệ” – Xóa bỏ ngai vàng phong kiến.',
+    highlight: 'Đường lối ngoại giao và chính trị sắc bén của Đảng trong việc buộc chính quyền phong kiến đầu hàng không đổ máu, vua Bảo Đại thoái vị.',
     stats: [
-      { label: 'Thời điểm tiếp quản', val: '16h ngày 23/08/1945' },
-      { label: 'Chấm dứt triều đại', val: 'Nguyễn triều hàng thế kỷ' }
+      { label: 'Cơ quan chỉ đạo', val: 'Ủy ban Khởi nghĩa Trung Trung Bộ' },
+      { label: 'Sự kiện mang tính biểu tượng', val: 'Vua Bảo Đại thoái vị (30/08)' }
     ],
     figures: ['Tố Hữu', 'Hồ Tùng Mậu', 'Trần Huy Liệu', 'Vua Bảo Đại'],
     timelineSteps: [
-      { time: '20 – 22/08/1945', text: 'Phái đoàn Trung ương thành lập Ủy ban Khởi nghĩa tại Huế do Tố Hữu làm Chủ tịch, gây sức ép buộc Bảo Đại thoái vị.' },
-      { time: '23/08/1945', text: 'Hàng vạn nhân dân mít tinh tại sân vận động Huế; công bố thành lập Ủy ban Nhân dân Cách mạng lâm thời.' },
-      { time: '30/08/1945', text: 'Vua Bảo Đại đọc Chiếu thoái vị, trao nộp ấn kiếm trước cửa Ngọ Môn cho phái đoàn đại diện chính phủ.' }
+      { time: '20 – 22/08/1945', text: 'Tố Hữu và Xứ ủy Trung Kỳ khẩn trương chuẩn bị lực lượng, gây sức ép chính trị mạnh mẽ lên triều đình Huế.' },
+      { time: '23/08/1945', text: 'Nhân dân Huế khởi nghĩa giành chính quyền thành công, lập Ủy ban Nhân dân Cách mạng lâm thời.' },
+      { time: '30/08/1945', text: 'Đảng và Chính phủ tiếp nhận ấn kiếm, chính thức chấm dứt triều đại phong kiến cuối cùng.' }
     ],
-    significance: 'Xóa bỏ hoàn toàn chế độ quân chủ phong kiến tồn tại hàng ngàn năm tại Việt Nam.'
+    significance: 'Thể hiện thành công nghệ thuật vận động, thuyết phục và phân hóa kẻ thù của Đảng, giải quyết triệt để vấn đề chính quyền.'
   },
   {
     id: 'sai-gon',
-    title: 'Sài Gòn Khởi Nghĩa Giành Chính Quyền',
+    title: 'Khởi nghĩa tại Sài Gòn & Hoàn thành thắng lợi Nam Bộ',
     date: '25/08/1945',
-    category: 'Tổng khởi nghĩa',
+    category: 'Thắng lợi Tổng khởi nghĩa',
     coords: [10.7769, 106.7009],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/FOMRPr1TXHk',
     videoSource: 'Truyền hình Nhân Dân (Báo Nhân Dân)',
-    highlight: 'Khí thế ngút trời đưa cuộc Tổng khởi nghĩa 15 ngày trên cả nước toàn thắng trọn vẹn.',
+    highlight: 'Đảng bộ Nam Bộ lãnh đạo quần chúng vùng lên đập tan sào huyệt cuối cùng của thực dân, hoàn thành trọn vẹn Tổng khởi nghĩa từ Bắc chí Nam.',
     stats: [
-      { label: 'Quần chúng biểu tình', val: '>1.000.000 đồng bào' },
-      { label: 'Lực lượng xung kích', val: 'Thanh niên Tiền phong' }
+      { label: 'Lãnh đạo trực tiếp', val: 'Xứ ủy Nam Bộ & Trần Văn Giàu' },
+      { label: 'Lực lượng tham gia', val: 'Hơn 1 triệu quần chúng' }
     ],
-    figures: ['Trần Văn Giàu (Chủ tịch UB Hành chánh Nam Bộ)'],
+    figures: ['Trần Văn Giàu'],
     timelineSteps: [
-      { time: 'Tối 24/08/1945', text: 'Chiếm các mục tiêu trọng yếu: Dinh Khâm sai, bưu điện, nhà đèn, bót cảnh sát; hạ cờ quẻ ly kéo cờ đỏ sao vàng.' },
-      { time: 'Sáng 25/08/1945', text: 'Hơn một triệu quần chúng Sài Gòn – Chợ Lớn với giáo mác, tầm vông vạt nhọn rầm rộ xuống đường tuần hành.' },
-      { time: '13h ngày 25/08', text: 'Đồng chí Trần Văn Giàu tuyên bố thành lập nền Dân chủ Cộng hòa tại Nam Bộ trước hàng vạn quốc dân.' }
+      { time: 'Tối 24/08/1945', text: 'Xứ ủy Nam Bộ quyết định phát động khởi nghĩa chiếm các mục tiêu chiến lược tại Sài Gòn.' },
+      { time: 'Sáng 25/08/1945', text: 'Hơn một triệu đồng bào Sài Gòn - Chợ Lớn rầm rộ xuống đường biểu tình, làm tê liệt toàn bộ hệ thống cai trị của địch.' },
+      { time: '13h ngày 25/08/1945', text: 'Tuyên bố thành lập chính quyền cách mạng lâm thời Nam Bộ trước hàng vạn quần chúng.' }
     ],
-    significance: 'Đòn quyết định làm chủ sào huyệt thực dân cuối cùng, khẳng định trọn vẹn nền độc lập từ Bắc chí Nam.'
+    significance: 'Khẳng định sự lãnh đạo kiên cường, sáng tạo của Đảng bộ Nam Bộ, đưa cuộc Tổng khởi nghĩa 1945 đi đến thắng lợi toàn diện trên phạm vi cả nước.'
   },
   {
     id: 'ba-dinh',
-    title: 'Ba Đình: Tuyên Ngôn Độc Lập Khai Sinh Đất Nước',
+    title: 'Khai sinh nước Việt Nam Dân chủ Cộng hòa',
     date: '02/09/1945',
-    category: 'Thắng lợi hoàn toàn',
+    category: 'Thắng lợi & Hoạch định quốc gia',
     coords: [21.0378, 105.8344],
     videoEmbed: 'https://www.youtube-nocookie.com/embed/jHmz5FgYpYo',
     videoSource: 'Đài Truyền hình Việt Nam (VTV)',
-    highlight: '“Nước Việt Nam có quyền hưởng tự do và độc lập, và sự thật đã thành một nước tự do, độc lập!”',
+    highlight: 'Thành quả vĩ đại nhất dưới sự lãnh đạo của Đảng: Đưa dân tộc Việt Nam bước vào kỷ nguyên độc lập, tự do, Đảng trở thành đảng cầm quyền.',
     stats: [
-      { label: 'Thời gian soạn thảo', val: '28 – 31/08 (48 Hàng Ngang)' },
-      { label: 'Thời khắc công bố', val: '14h00 ngày 02/09/1945' }
+      { label: 'Tác giả văn kiện', val: 'Chủ tịch Hồ Chí Minh' },
+      { label: 'Nhà nước ra đời', val: 'VNDCCH (Nhà nước công nông đầu tiên ĐNA)' }
     ],
-    figures: ['Chủ tịch Hồ Chí Minh', 'Kiến trúc sư Ngô Huy Quỳnh (thiết kế lễ đài)'],
+    figures: ['Chủ tịch Hồ Chí Minh', 'Các đồng chí trong Chính phủ lâm thời'],
     timelineSteps: [
-      { time: '28 – 31/08/1945', text: 'Bác Hồ khởi thảo và hoàn thiện bản Tuyên ngôn Độc lập tại tầng 2 căn nhà số 48 phố Hàng Ngang.' },
-      { time: '14h ngày 02/09/1945', text: 'Trước hàng chục vạn đồng bào tại Ba Đình, Người trịnh trọng đọc Tuyên ngôn, khai sinh nước VNDCCH.' },
-      { time: 'Lời thề độc lập', text: 'Chính phủ lâm thời ra mắt và toàn thể quốc dân đồng thanh tuyên thệ quyết đem tính mạng, của cải giữ vững độc lập.' }
+      { time: '28 – 31/08/1945', text: 'Chủ tịch Hồ Chí Minh soạn thảo bản Tuyên ngôn Độc lập, đúc kết ý chí và khát vọng của toàn Đảng, toàn dân.' },
+      { time: '14h ngày 02/09/1945', text: 'Tại Quảng trường Ba Đình lịch sử, Người đọc Tuyên ngôn Độc lập, khai sinh nước Việt Nam Dân chủ Cộng hòa.' },
+      { time: '02/09/1945', text: 'Chính phủ lâm thời ra mắt quốc dân và toàn thể nhân dân đồng thanh tuyên thệ bảo vệ nền độc lập.' }
     ],
-    significance: 'Mở ra kỷ nguyên mới rực rỡ: Nước Việt Nam Dân chủ Cộng hòa – Nhà nước công nông đầu tiên ở Đông Nam Á.'
+    significance: 'Đánh dấu mốc son chói lọi trong lịch sử dân tộc và Lịch sử Đảng: Đảng từ một đảng hoạt động bí mật đã trở thành đảng cầm quyền, lãnh đạo Nhà nước và xã hội.'
   }
 ];
 
@@ -541,7 +541,7 @@ export default function HistoricalMap() {
               onClick={() => setShowInfoModal(true)}
               title="Xem nhóm tác giả & tài liệu"
             >
-              📖 Tác giả & Tài liệu
+              Tác giả & Tài liệu
             </button>
           </div>
         </div>
